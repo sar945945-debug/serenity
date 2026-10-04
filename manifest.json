@@ -1,0 +1,11 @@
+{
+  "name": "Serenity",
+  "short_name": "Serenity",
+  "description": "A peaceful space for calm, relaxation and positive moments.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0d2f2b",
+  "theme_color": "#17463f",
+  "orientation": "portrait",
+  "scope": "./"
+}

@@ -1,0 +1,10131 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Serenity</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    font-family:Arial,sans-serif;
+    min-height:100vh;
+    color:white;
+    background:
+    linear-gradient(135deg,rgba(5,35,32,.78),rgba(20,65,60,.55)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=85")
+    center/cover fixed;
+}
+
+.overlay{
+    min-height:100vh;
+    padding:22px 16px 40px;
+    background:linear-gradient(
+        180deg,
+        rgba(0,0,0,.15),
+        rgba(0,0,0,.45)
+    );
+}
+
+.topbar{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.logo span{font-size:27px}
+
+.lang{
+    border:1px solid rgba(255,255,255,.35);
+    background:rgba(255,255,255,.12);
+    color:white;
+    padding:9px 14px;
+    border-radius:30px;
+    cursor:pointer;
+    backdrop-filter:blur(10px);
+}
+
+.hero{
+    max-width:900px;
+    margin:100px auto 55px;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 15px;
+    border-radius:30px;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.25);
+    backdrop-filter:blur(10px);
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:clamp(42px,8vw,76px);
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    max-width:600px;
+    margin:auto;
+    line-height:1.7;
+    font-size:17px;
+    opacity:.9;
+}
+
+.start{
+    margin-top:30px;
+    padding:14px 28px;
+    border:0;
+    border-radius:30px;
+    background:white;
+    color:#17463f;
+    font-weight:bold;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.start:hover{
+    transform:translateY(-3px);
+}
+
+.cards{
+    max-width:1050px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.card{
+    padding:22px 16px;
+    text-align:center;
+    border-radius:20px;
+    background:rgba(255,255,255,.11);
+    border:1px solid rgba(255,255,255,.18);
+    backdrop-filter:blur(12px);
+}
+
+.card .icon{font-size:30px;margin-bottom:10px}
+.card h3{font-size:16px;margin-bottom:6px}
+.card p{font-size:12px;opacity:.7}
+
+.footer{
+    text-align:center;
+    margin-top:55px;
+    font-size:12px;
+    opacity:.65;
+}
+
+@media(max-width:750px){
+    .hero{margin-top:75px}
+    .cards{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:430px){
+    .logo{font-size:21px}
+    .hero{margin-top:65px}
+    .cards{gap:10px}
+    .card{padding:18px 10px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+    <div class="topbar">
+        <div class="logo">
+            🌿 Serenity
+        </div>
+
+        <button class="lang" onclick="changeLanguage()" id="langBtn">
+            हिन्दी
+        </button>
+    </div>
+
+    <section class="hero">
+
+        <div class="badge" id="badge">
+            ✨ A peaceful place for your mind
+        </div>
+
+        <h1 id="title">Welcome to Serenity</h1>
+
+        <p id="subtitle">
+            Take a breath. Slow down. Find peace in every moment.
+        </p>
+
+        <button class="start" id="startBtn">
+            Explore Serenity →
+        </button>
+
+    </section>
+
+    <section class="cards">
+
+        <div class="card">
+            <div class="icon">🛕</div>
+            <h3 id="c1">Temple</h3>
+            <p>Peace & Devotion</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">💧</div>
+            <h3 id="c2">Water</h3>
+            <p>Healthy Daily Habit</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌿</div>
+            <h3 id="c3">Sukoon Zone</h3>
+            <p>Relax Your Mind</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌙</div>
+            <h3 id="c4">Relax Room</h3>
+            <p>Calm & Breathe</p>
+        </div>
+
+    </section>
+
+    <div class="footer">
+        Serenity • A peaceful space for everyday life
+    </div>
+
+</div>
+
+<script>
+let hindi=false;
+
+function changeLanguage(){
+
+    hindi=!hindi;
+
+    document.getElementById("langBtn").textContent =
+        hindi ? "English" : "हिन्दी";
+
+    document.getElementById("badge").textContent =
+        hindi ? "✨ आपके मन के लिए एक शांत जगह"
+              : "✨ A peaceful place for your mind";
+
+    document.getElementById("title").textContent =
+        hindi ? "Serenity में आपका स्वागत है"
+              : "Welcome to Serenity";
+
+    document.getElementById("subtitle").textContent =
+        hindi
+        ? "एक गहरी सांस लें। थोड़ा रुकें। हर पल में सुकून महसूस करें।"
+        : "Take a breath. Slow down. Find peace in every moment.";
+
+    document.getElementById("startBtn").textContent =
+        hindi ? "Serenity शुरू करें →"
+              : "Explore Serenity →";
+
+    document.getElementById("c1").textContent =
+        hindi ? "मंदिर" : "Temple";
+
+    document.getElementById("c2").textContent =
+        hindi ? "पानी" : "Water";
+
+    document.getElementById("c3").textContent =
+        hindi ? "सुकून ज़ोन" : "Sukoon Zone";
+
+    document.getElementById("c4").textContent =
+        hindi ? "रिलैक्स रूम" : "Relax Room";
+}
+</script>
+
+</body>
+</html>
+```
+```html
+<!-- ===== SERENITY TEMPLE FEATURE ===== -->
+
+<section id="serenityTemple" style="
+max-width:650px;
+margin:45px auto;
+padding:35px 20px;
+text-align:center;
+border-radius:28px;
+background:rgba(255,255,255,.12);
+border:1px solid rgba(255,255,255,.2);
+backdrop-filter:blur(14px);
+color:white;
+font-family:Arial,sans-serif;
+">
+
+<div style="font-size:48px">🛕</div>
+
+<h2 style="font-size:32px;margin:10px 0 5px">
+Temple
+</h2>
+
+<p style="opacity:.75">
+Ram Naam Jaap • Peace • Devotion
+</p>
+
+<div style="font-size:46px;font-weight:bold;margin:25px 0 15px">
+<span id="srRamCount">0</span>
+<small style="display:block;font-size:13px;opacity:.65">
+/ 200 Ram Naam
+</small>
+</div>
+
+<button onclick="srAddRam()" style="
+border:0;
+padding:14px 32px;
+border-radius:30px;
+background:white;
+color:#17463f;
+font-weight:bold;
+font-size:16px;
+cursor:pointer;
+">
+🙏 Ram
+</button>
+
+<div style="
+height:8px;
+margin:25px auto 15px;
+max-width:420px;
+border-radius:20px;
+background:rgba(255,255,255,.15);
+overflow:hidden;
+">
+<div id="srRamBar" style="
+height:100%;
+width:0%;
+background:white;
+border-radius:20px;
+transition:.35s;
+"></div>
+</div>
+
+<p id="srRamMessage" style="font-size:13px;opacity:.8">
+Start your peaceful journey with Ram Naam.
+</p>
+
+</section>
+
+<script>
+(function(){
+
+let count = 0;
+
+window.srAddRam = function(){
+
+    if(count >= 200) return;
+
+    count++;
+
+    document.getElementById("srRamCount").textContent = count;
+
+    document.getElementById("srRamBar").style.width =
+        (count / 200 * 100) + "%";
+
+    if(count < 200){
+
+        document.getElementById("srRamMessage").textContent =
+        "🙏 Every Ram Naam brings a little more peace.";
+
+    }else{
+
+        document.getElementById("srRamMessage").textContent =
+        "✨ 200 Ram Naam complete! May your heart be filled with peace. 🛕";
+
+        document.getElementById("srRamCount").style.transform =
+        "scale(1.15)";
+
+        setTimeout(()=>{
+            document.getElementById("srRamCount").style.transform =
+            "scale(1)";
+        },400);
+    }
+};
+
+})();
+</script>
+```html
+<!-- ===== SERENITY TEMPLE EXPERIENCE ===== -->
+
+<style>
+#srTemplePage{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:none;
+    overflow:auto;
+    color:white;
+    text-align:center;
+    background:
+    radial-gradient(circle at 50% 20%,rgba(255,210,120,.22),transparent 30%),
+    linear-gradient(180deg,#162d2b,#071615 75%);
+    animation:srTempleIn .5s ease;
+}
+
+@keyframes srTempleIn{
+    from{opacity:0;transform:scale(1.03)}
+    to{opacity:1;transform:scale(1)}
+}
+
+.srTempleTop{
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.srBack{
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(255,255,255,.1);
+    color:white;
+    padding:9px 15px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+.srTempleScene{
+    min-height:420px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.srMoon{
+    position:absolute;
+    top:30px;
+    right:12%;
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    background:#fff3bd;
+    box-shadow:0 0 35px rgba(255,230,150,.45);
+}
+
+.srTempleEmoji{
+    font-size:105px;
+    animation:srTempleFloat 3s ease-in-out infinite;
+    filter:drop-shadow(0 12px 20px rgba(0,0,0,.35));
+}
+
+@keyframes srTempleFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+}
+
+.srFlower{
+    position:absolute;
+    font-size:25px;
+    animation:srFlowerFall 4s linear infinite;
+    opacity:.85;
+}
+
+@keyframes srFlowerFall{
+    0%{transform:translateY(-80px) rotate(0);opacity:0}
+    15%{opacity:1}
+    100%{transform:translateY(500px) rotate(280deg);opacity:0}
+}
+
+.srF1{left:12%;animation-delay:.2s}
+.srF2{left:30%;animation-delay:1.5s}
+.srF3{left:65%;animation-delay:.8s}
+.srF4{left:82%;animation-delay:2s}
+
+.srTempleTitle{
+    font-size:34px;
+    margin:12px 0 5px;
+}
+
+.srTempleSub{
+    opacity:.7;
+    font-size:14px;
+}
+
+.srRamNumber{
+    margin:25px 0 10px;
+    font-size:52px;
+    font-weight:bold;
+}
+
+.srRamNumber small{
+    display:block;
+    font-size:13px;
+    opacity:.6;
+}
+
+.srRamButton{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.3);
+    background:rgba(255,255,255,.13);
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+    box-shadow:0 0 30px rgba(255,220,140,.12);
+    transition:.2s;
+}
+
+.srRamButton:active{
+    transform:scale(.88);
+}
+
+.srRamProgress{
+    width:min(500px,80%);
+    height:9px;
+    margin:25px auto 12px;
+    background:rgba(255,255,255,.13);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+#srRamFill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#fff0ae,#fff);
+    transition:.35s;
+}
+
+#srRamStatus{
+    font-size:13px;
+    opacity:.75;
+}
+
+#srCelebration{
+    position:fixed;
+    inset:0;
+    z-index:10001;
+    display:none;
+    place-items:center;
+    padding:25px;
+    background:rgba(5,20,18,.88);
+    backdrop-filter:blur(8px);
+}
+
+.srCelebrateBox{
+    max-width:500px;
+    padding:40px 25px;
+    border-radius:30px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.25);
+    animation:srCelebrate .6s ease;
+}
+
+@keyframes srCelebrate{
+    from{transform:scale(.75);opacity:0}
+    to{transform:scale(1);opacity:1}
+}
+
+.srCelebrateIcon{
+    font-size:70px;
+    margin-bottom:15px;
+}
+
+.srCelebrateBox h2{
+    font-size:30px;
+    margin-bottom:12px;
+}
+
+.srCelebrateBox p{
+    line-height:1.7;
+    opacity:.85;
+}
+
+.srCloseCelebrate{
+    margin-top:25px;
+    border:0;
+    border-radius:25px;
+    padding:12px 25px;
+    cursor:pointer;
+    color:#173b36;
+    font-weight:bold;
+}
+</style>
+
+<div id="srTemplePage">
+
+    <div class="srTempleTop">
+        <strong>🛕 Serenity Temple</strong>
+        <button class="srBack" onclick="srCloseTemple()">← Back</button>
+    </div>
+
+    <div class="srTempleScene">
+
+        <div class="srMoon"></div>
+
+        <div class="srFlower srF1">🌸</div>
+        <div class="srFlower srF2">🌼</div>
+        <div class="srFlower srF3">🌸</div>
+        <div class="srFlower srF4">🌺</div>
+
+        <div class="srTempleEmoji">🛕</div>
+
+        <h1 class="srTempleTitle">Ram Naam Jaap</h1>
+
+        <p class="srTempleSub">
+            A moment of peace, devotion and inner calm
+        </p>
+
+        <div class="srRamNumber">
+            <span id="srDailyRam">0</span>
+            <small>/ 200 Ram Naam Today</small>
+        </div>
+
+        <button class="srRamButton" onclick="srRamJaap()">
+            🙏<br>Ram
+        </button>
+
+        <div class="srRamProgress">
+            <div id="srRamFill"></div>
+        </div>
+
+        <p id="srRamStatus">
+            Begin your peaceful journey.
+        </p>
+
+    </div>
+</div>
+
+<div id="srCelebration">
+    <div class="srCelebrateBox">
+
+        <div class="srCelebrateIcon">🛕🌸✨</div>
+
+        <h2>200 Ram Naam Complete!</h2>
+
+        <p>
+            आज का आपका Ram Naam Jaap पूरा हुआ।
+            <br><br>
+            May your heart remain peaceful,
+            positive and blessed.
+        </p>
+
+        <button class="srCloseCelebrate"
+                onclick="srCloseCelebration()">
+            🙏 Peacefully Continue
+        </button>
+
+    </div>
+</div>
+
+<script>
+(function(){
+
+    const temple = document.getElementById("srTemplePage");
+    const oldTemple = document.getElementById("serenityTemple");
+
+    /* Hide old basic Temple block */
+    if(oldTemple){
+        oldTemple.style.display = "none";
+    }
+
+    /* Make Home Temple card clickable */
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+
+        const title = card.querySelector("h3");
+
+        if(title && title.textContent.trim().toLowerCase() === "temple"){
+
+            card.style.cursor = "pointer";
+
+            card.addEventListener("click", function(){
+                srOpenTemple();
+            });
+        }
+    });
+
+    const today = new Date().toISOString().split("T")[0];
+
+    let savedDate = localStorage.getItem("srRamDate");
+    let count = Number(localStorage.getItem("srRamCount") || 0);
+
+    if(savedDate !== today){
+        count = 0;
+        localStorage.setItem("srRamDate",today);
+        localStorage.setItem("srRamCount","0");
+    }
+
+    function updateRam(){
+
+        document.getElementById("srDailyRam").textContent = count;
+
+        const percent = Math.min((count / 200) * 100,100);
+
+        document.getElementById("srRamFill").style.width =
+            percent + "%";
+
+        document.getElementById("srRamStatus").textContent =
+            count >= 200
+            ? "✨ Today's peaceful Ram Naam journey is complete."
+            : "🙏 " + (200-count) + " Ram Naam remaining today.";
+    }
+
+    window.srOpenTemple = function(){
+
+        temple.style.display = "block";
+        updateRam();
+        document.body.style.overflow = "hidden";
+    };
+
+    window.srCloseTemple = function(){
+
+        temple.style.display = "none";
+        document.body.style.overflow = "";
+    };
+
+    window.srRamJaap = function(){
+
+        if(count >= 200){
+
+            document.getElementById("srCelebration").style.display =
+                "grid";
+
+            return;
+        }
+
+        count++;
+
+        localStorage.setItem("srRamCount",count);
+
+        updateRam();
+
+        if(count === 200){
+
+            setTimeout(function(){
+
+                document.getElementById("srCelebration").style.display =
+                    "grid";
+
+            },350);
+        }
+    };
+
+    window.srCloseCelebration = function(){
+
+        document.getElementById("srCelebration").style.display =
+            "none";
+    };
+
+    updateRam();
+
+})();
+</script>
+```html
+<!-- ===== TEMPLE PREMIUM CELEBRATION UPDATE ===== -->
+
+<style>
+#srTemplePage{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:none;
+    overflow:auto;
+    color:white;
+    text-align:center;
+    background:
+    radial-gradient(circle at 50% 20%,rgba(255,220,150,.25),transparent 32%),
+    linear-gradient(180deg,#182f2c,#061413 80%);
+}
+
+.srTempleTop{
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.srBack{
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(255,255,255,.1);
+    color:white;
+    padding:9px 15px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+.srTempleScene{
+    min-height:500px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.srMoon{
+    position:absolute;
+    top:35px;
+    right:12%;
+    width:78px;
+    height:78px;
+    border-radius:50%;
+    background:#fff1b5;
+    box-shadow:0 0 45px rgba(255,230,150,.6);
+}
+
+.srRamSita{
+    font-size:58px;
+    letter-spacing:8px;
+    margin-bottom:5px;
+    animation:srDevotion 3s ease-in-out infinite;
+    filter:drop-shadow(0 8px 18px rgba(255,220,140,.25));
+}
+
+@keyframes srDevotion{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-7px)}
+}
+
+.srTempleEmoji{
+    font-size:105px;
+    animation:srTempleFloat 3s ease-in-out infinite;
+}
+
+@keyframes srTempleFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+}
+
+.srFlower{
+    position:absolute;
+    font-size:26px;
+    animation:srFlowerFall 5s linear infinite;
+}
+
+@keyframes srFlowerFall{
+    0%{transform:translateY(-100px) rotate(0);opacity:0}
+    15%{opacity:1}
+    100%{transform:translateY(550px) rotate(360deg);opacity:0}
+}
+
+.srF1{left:10%;animation-delay:.2s}
+.srF2{left:25%;animation-delay:1.3s}
+.srF3{left:45%;animation-delay:2.2s}
+.srF4{left:67%;animation-delay:.7s}
+.srF5{left:85%;animation-delay:1.8s}
+
+.srTempleTitle{
+    font-size:34px;
+    margin:10px 0 5px;
+}
+
+.srTempleSub{
+    opacity:.7;
+    font-size:14px;
+}
+
+.srRamNumber{
+    margin:22px 0 12px;
+    font-size:52px;
+    font-weight:bold;
+}
+
+.srRamNumber small{
+    display:block;
+    font-size:13px;
+    opacity:.6;
+}
+
+.srRamButton{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.3);
+    background:rgba(255,255,255,.13);
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.srRamButton:active{
+    transform:scale(.86);
+}
+
+.srRamProgress{
+    width:min(500px,80%);
+    height:9px;
+    margin:24px auto 12px;
+    background:rgba(255,255,255,.13);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+#srRamFill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#ffe9a6,#ffffff);
+    transition:.4s;
+}
+
+#srRamStatus{
+    font-size:13px;
+    opacity:.75;
+}
+
+/* ===== PREMIUM CELEBRATION ===== */
+
+#srCelebration{
+    position:fixed;
+    inset:0;
+    z-index:10001;
+    display:none;
+    place-items:center;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at center,
+    rgba(255,218,130,.25),
+    rgba(3,18,16,.95) 65%);
+    backdrop-filter:blur(10px);
+}
+
+.srGlow{
+    position:absolute;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    background:rgba(255,215,120,.12);
+    box-shadow:
+    0 0 80px rgba(255,215,120,.25),
+    0 0 150px rgba(255,215,120,.15);
+    animation:srGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes srGlow{
+    0%,100%{transform:scale(.85);opacity:.5}
+    50%{transform:scale(1.15);opacity:1}
+}
+
+.srCelebrateBox{
+    position:relative;
+    z-index:3;
+    width:min(520px,90%);
+    padding:42px 25px;
+    border-radius:32px;
+    text-align:center;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.28);
+    box-shadow:0 20px 70px rgba(0,0,0,.4);
+    animation:srCelebrateIn .7s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes srCelebrateIn{
+    0%{transform:scale(.55) translateY(30px);opacity:0}
+    70%{transform:scale(1.04)}
+    100%{transform:scale(1);opacity:1}
+}
+
+.srCelebrateIcon{
+    font-size:70px;
+    margin-bottom:12px;
+    animation:srBless 2s ease-in-out infinite;
+}
+
+@keyframes srBless{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+}
+
+.srCelebrateBox h2{
+    font-size:30px;
+    margin-bottom:14px;
+}
+
+.srCelebrateBox p{
+    line-height:1.8;
+    opacity:.88;
+}
+
+.srBlessing{
+    margin-top:18px;
+    font-size:14px;
+    opacity:.7;
+}
+
+.srCloseCelebrate{
+    margin-top:25px;
+    border:0;
+    border-radius:25px;
+    padding:13px 27px;
+    cursor:pointer;
+    color:#173b36;
+    font-weight:bold;
+    font-size:14px;
+}
+
+/* celebration flowers */
+
+.srPetal{
+    position:absolute;
+    top:-40px;
+    font-size:24px;
+    z-index:2;
+    animation:srPetalFall 4s linear forwards;
+}
+
+@keyframes srPetalFall{
+    0%{
+        transform:translateY(0) rotate(0);
+        opacity:0;
+    }
+    12%{opacity:1}
+    100%{
+        transform:translateY(110vh) rotate(420deg);
+        opacity:0;
+    }
+}
+</style>
+
+<div id="srTemplePage">
+
+    <div class="srTempleTop">
+        <strong>🛕 Serenity Temple</strong>
+        <button class="srBack" onclick="srCloseTemple()">← Back</button>
+    </div>
+
+    <div class="srTempleScene">
+
+        <div class="srMoon"></div>
+
+        <div class="srFlower srF1">🌸</div>
+        <div class="srFlower srF2">🌼</div>
+        <div class="srFlower srF3">🌺</div>
+        <div class="srFlower srF4">🌸</div>
+        <div class="srFlower srF5">🌼</div>
+
+        <div class="srRamSita">🙏 🪷 🙏</div>
+
+        <div class="srTempleEmoji">🛕</div>
+
+        <h1 class="srTempleTitle">Ram Naam Jaap</h1>
+
+        <p class="srTempleSub">
+            Peace • Devotion • Inner Calm
+        </p>
+
+        <div class="srRamNumber">
+            <span id="srDailyRam">0</span>
+            <small>/ 200 Ram Naam Today</small>
+        </div>
+
+        <button class="srRamButton" onclick="srRamJaap()">
+            🙏<br>Ram
+        </button>
+
+        <div class="srRamProgress">
+            <div id="srRamFill"></div>
+        </div>
+
+        <p id="srRamStatus">
+            Begin your peaceful journey.
+        </p>
+
+    </div>
+</div>
+
+<div id="srCelebration">
+
+    <div class="srGlow"></div>
+
+    <div class="srCelebrateBox">
+
+        <div class="srCelebrateIcon">
+            🛕🌸🙏✨
+        </div>
+
+        <h2>200 Ram Naam Complete!</h2>
+
+        <p>
+            आज का आपका Ram Naam Jaap पूरा हुआ।
+            <br>
+            आपने अपने दिन में एक सुंदर
+            <br>
+            peaceful moment बनाया है।
+        </p>
+
+        <div class="srBlessing">
+            ✨ May your heart stay peaceful, positive and blessed. ✨
+        </div>
+
+        <button class="srCloseCelebrate"
+                onclick="srCloseCelebration()">
+            🙏 Peacefully Continue
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+(function(){
+
+    const temple = document.getElementById("srTemplePage");
+
+    const today =
+        new Date().toISOString().split("T")[0];
+
+    let savedDate =
+        localStorage.getItem("srRamDate");
+
+    let count =
+        Number(localStorage.getItem("srRamCount") || 0);
+
+    if(savedDate !== today){
+
+        count = 0;
+
+        localStorage.setItem(
+            "srRamDate",
+            today
+        );
+
+        localStorage.setItem(
+            "srRamCount",
+            "0"
+        );
+    }
+
+    function updateRam(){
+
+        const number =
+            document.getElementById("srDailyRam");
+
+        const fill =
+            document.getElementById("srRamFill");
+
+        const status =
+            document.getElementById("srRamStatus");
+
+        if(!number) return;
+
+        number.textContent = count;
+
+        fill.style.width =
+            Math.min(count / 200 * 100,100) + "%";
+
+        status.textContent =
+            count >= 200
+            ? "✨ Today's Ram Naam journey is complete."
+            : "🙏 " + (200-count) +
+              " Ram Naam remaining today.";
+    }
+
+    window.srOpenTemple = function(){
+
+        temple.style.display = "block";
+
+        document.body.style.overflow = "hidden";
+
+        updateRam();
+    };
+
+    window.srCloseTemple = function(){
+
+        temple.style.display = "none";
+
+        document.body.style.overflow = "";
+    };
+
+    window.srRamJaap = function(){
+
+        if(count >= 200){
+
+            showCelebration();
+
+            return;
+        }
+
+        count++;
+
+        localStorage.setItem(
+            "srRamCount",
+            count
+        );
+
+        updateRam();
+
+        if(count === 200){
+
+            setTimeout(
+                showCelebration,
+                350
+            );
+        }
+    };
+
+    function showCelebration(){
+
+        const celebration =
+            document.getElementById("srCelebration");
+
+        celebration.style.display = "grid";
+
+        /* Flower shower */
+
+        for(let i=0;i<22;i++){
+
+            const petal =
+                document.createElement("div");
+
+            petal.className = "srPetal";
+
+            petal.textContent =
+                ["🌸","🌼","🌺","🪷"][i%4];
+
+            petal.style.left =
+                Math.random()*100 + "%";
+
+            petal.style.animationDelay =
+                Math.random()*1.5 + "s";
+
+            celebration.appendChild(petal);
+
+            setTimeout(
+                ()=>petal.remove(),
+                5500
+            );
+        }
+    }
+
+    window.srCloseCelebration = function(){
+
+        document.getElementById(
+            "srCelebration"
+        ).style.display = "none";
+    };
+
+    updateRam();
+
+})();
+</script>
+<!-- ================= WATER TRACKER ================= -->
+
+<style>
+#srWaterPage{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:none;
+    overflow:auto;
+    color:white;
+    font-family:Arial,sans-serif;
+    background:
+        linear-gradient(rgba(3,35,48,.72),rgba(5,65,78,.78)),
+        linear-gradient(135deg,#063b4b,#087c8c,#0b4f68);
+}
+
+.srWaterInner{
+    min-height:100vh;
+    padding:22px 18px 40px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.srWaterTop{
+    width:100%;
+    max-width:650px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.srWaterBack{
+    border:1px solid rgba(255,255,255,.3);
+    background:rgba(255,255,255,.12);
+    color:white;
+    padding:9px 15px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+.srWaterTitle{
+    margin-top:45px;
+    text-align:center;
+}
+
+.srWaterTitle .icon{
+    font-size:55px;
+}
+
+.srWaterTitle h1{
+    font-size:36px;
+    margin:10px 0 6px;
+}
+
+.srWaterTitle p{
+    opacity:.8;
+}
+
+/* JUG */
+
+.srJug{
+    position:relative;
+    width:190px;
+    height:290px;
+    margin:35px auto 20px;
+    border:5px solid rgba(255,255,255,.75);
+    border-radius:20px 20px 35px 35px;
+    overflow:hidden;
+    background:rgba(255,255,255,.08);
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+
+.srJug:before{
+    content:"";
+    position:absolute;
+    top:-18px;
+    left:35px;
+    right:35px;
+    height:18px;
+    border:4px solid rgba(255,255,255,.7);
+    border-bottom:0;
+    border-radius:15px 15px 0 0;
+}
+
+.srJugHandle{
+    position:absolute;
+    right:-42px;
+    top:55px;
+    width:48px;
+    height:125px;
+    border:7px solid rgba(255,255,255,.7);
+    border-left:0;
+    border-radius:0 35px 35px 0;
+}
+
+.srWaterFill{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:0%;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(119,235,255,.85),
+            rgba(20,166,210,.95)
+        );
+    transition:height .8s ease;
+}
+
+.srWaterWave{
+    position:absolute;
+    top:-10px;
+    left:-20%;
+    width:140%;
+    height:25px;
+    border-radius:50%;
+    background:rgba(180,245,255,.65);
+    animation:srWave 2s linear infinite;
+}
+
+@keyframes srWave{
+    0%{transform:translateX(-5%)}
+    50%{transform:translateX(5%)}
+    100%{transform:translateX(-5%)}
+}
+
+.srWaterMarks{
+    position:absolute;
+    right:8px;
+    top:35px;
+    bottom:35px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    font-size:11px;
+    opacity:.6;
+}
+
+/* PROGRESS */
+
+.srWaterStats{
+    text-align:center;
+    margin:10px 0 20px;
+}
+
+.srWaterAmount{
+    font-size:30px;
+    font-weight:bold;
+}
+
+.srWaterRemaining{
+    opacity:.75;
+    margin-top:5px;
+}
+
+.srWaterBar{
+    width:min(500px,90vw);
+    height:10px;
+    border-radius:20px;
+    background:rgba(255,255,255,.16);
+    overflow:hidden;
+    margin:20px auto;
+}
+
+#srWaterProgress{
+    height:100%;
+    width:0%;
+    border-radius:20px;
+    background:white;
+    transition:width .6s ease;
+}
+
+/* GLASS BUTTON */
+
+.srGlassBtn{
+    border:0;
+    padding:15px 28px;
+    border-radius:35px;
+    background:white;
+    color:#075469;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    transition:.25s;
+}
+
+.srGlassBtn:hover{
+    transform:translateY(-3px);
+}
+
+.srGlassBtn:active{
+    transform:scale(.94);
+}
+
+.srGlass{
+    position:fixed;
+    font-size:35px;
+    pointer-events:none;
+    z-index:100001;
+    animation:srDrink .9s ease forwards;
+}
+
+@keyframes srDrink{
+    0%{
+        transform:translateY(0) scale(1);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-170px) scale(.5);
+        opacity:0;
+    }
+}
+
+/* CELEBRATION */
+
+#srWaterCelebrate{
+    position:fixed;
+    inset:0;
+    z-index:100000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,30,40,.72);
+    backdrop-filter:blur(10px);
+}
+
+.srWaterCelebrateBox{
+    width:min(430px,92vw);
+    padding:35px 25px;
+    text-align:center;
+    border-radius:30px;
+    background:rgba(255,255,255,.13);
+    border:1px solid rgba(255,255,255,.25);
+    box-shadow:0 25px 70px rgba(0,0,0,.4);
+    animation:srCelebrate .5s ease;
+}
+
+@keyframes srCelebrate{
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.srWaterCelebrateIcon{
+    font-size:60px;
+}
+
+.srWaterCelebrateBox h2{
+    margin:15px 0 10px;
+}
+
+.srWaterCelebrateBox p{
+    line-height:1.7;
+    opacity:.9;
+}
+
+.srWaterClose{
+    margin-top:20px;
+    padding:11px 22px;
+    border:0;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+@media(max-width:450px){
+    .srWaterTitle h1{
+        font-size:30px;
+    }
+
+    .srJug{
+        width:165px;
+        height:255px;
+    }
+}
+</style>
+
+
+<!-- WATER PAGE -->
+
+<div id="srWaterPage">
+
+    <div class="srWaterInner">
+
+        <div class="srWaterTop">
+            <button class="srWaterBack" onclick="srCloseWater()">
+                ← Back
+            </button>
+
+            <div>💧 Water</div>
+        </div>
+
+        <div class="srWaterTitle">
+            <div class="icon">💧</div>
+            <h1>Water Tracker</h1>
+            <p>हर घूंट आपके शरीर के लिए एक छोटा सा gift है।</p>
+        </div>
+
+        <div class="srJug">
+
+            <div class="srWaterFill" id="srWaterFill">
+                <div class="srWaterWave"></div>
+            </div>
+
+            <div class="srJugHandle"></div>
+
+            <div class="srWaterMarks">
+                <span>3L</span>
+                <span>2L</span>
+                <span>1L</span>
+                <span>0L</span>
+            </div>
+
+        </div>
+
+        <div class="srWaterStats">
+
+            <div class="srWaterAmount">
+                <span id="srWaterAmount">0.0</span> L / 3.0 L
+            </div>
+
+            <div class="srWaterRemaining" id="srWaterRemaining">
+                अभी 3.0 L बाकी है
+            </div>
+
+        </div>
+
+        <div class="srWaterBar">
+            <div id="srWaterProgress"></div>
+        </div>
+
+        <button class="srGlassBtn" onclick="srDrinkWater()">
+            🥛 मैंने एक Glass पानी पिया
+        </button>
+
+    </div>
+</div>
+
+
+<!-- WATER CELEBRATION -->
+
+<div id="srWaterCelebrate">
+
+    <div class="srWaterCelebrateBox">
+
+        <div class="srWaterCelebrateIcon">
+            💧✨🌿
+        </div>
+
+        <h2>आज का लक्ष्य पूरा! 🎉</h2>
+
+        <p>
+            आपने पूरे <b>3 लीटर पानी</b> का लक्ष्य पूरा कर लिया।
+            <br><br>
+            आज आपने अपने शरीर का बहुत अच्छा ख्याल रखा। 💙
+        </p>
+
+        <button class="srWaterClose" onclick="srCloseWaterCelebrate()">
+            Continue 🌿
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+(function(){
+
+    const target = 3;
+    const glass = 0.25;
+
+    const today = new Date().toISOString().slice(0,10);
+
+    let savedDate = localStorage.getItem("srWaterDate");
+    let amount = parseFloat(localStorage.getItem("srWaterAmount") || "0");
+
+    if(savedDate !== today){
+        amount = 0;
+        localStorage.setItem("srWaterDate",today);
+        localStorage.setItem("srWaterAmount","0");
+    }
+
+    window.srOpenWater = function(){
+
+        document.getElementById("srWaterPage").style.display="block";
+
+        srUpdateWater();
+
+    };
+
+    window.srCloseWater = function(){
+
+        document.getElementById("srWaterPage").style.display="none";
+
+    };
+
+    window.srDrinkWater = function(){
+
+        if(amount >= target){
+            return;
+        }
+
+        amount = Math.min(target, amount + glass);
+
+        localStorage.setItem("srWaterAmount",amount.toFixed(2));
+
+        srUpdateWater();
+
+        const glassEmoji = document.createElement("div");
+
+        glassEmoji.className="srGlass";
+        glassEmoji.textContent="💧";
+        glassEmoji.style.left=(35 + Math.random()*30)+"%";
+        glassEmoji.style.bottom="25%";
+
+        document.body.appendChild(glassEmoji);
+
+        setTimeout(()=>{
+            glassEmoji.remove();
+        },900);
+
+        if(amount >= target){
+
+            setTimeout(()=>{
+                document.getElementById("srWaterCelebrate").style.display="flex";
+            },600);
+
+        }
+
+    };
+
+    window.srCloseWaterCelebrate = function(){
+
+        document.getElementById("srWaterCelebrate").style.display="none";
+
+    };
+
+    function srUpdateWater(){
+
+        const percent = Math.min(100,(amount/target)*100);
+
+        document.getElementById("srWaterAmount").textContent =
+            amount.toFixed(2);
+
+        document.getElementById("srWaterFill").style.height =
+            percent+"%";
+
+        document.getElementById("srWaterProgress").style.width =
+            percent+"%";
+
+        const remaining = Math.max(0,target-amount);
+
+        document.getElementById("srWaterRemaining").textContent =
+            remaining > 0
+            ? "अभी "+remaining.toFixed(2)+" L बाकी है"
+            : "आज का पानी पूरा हो गया 💙";
+
+    }
+
+    /* HOME SCREEN WATER CARD */
+
+    document.querySelectorAll(".card").forEach(card=>{
+
+        const heading = card.querySelector("h3");
+
+        if(!heading) return;
+
+        const text = heading.textContent.trim().toLowerCase();
+
+        if(text === "water" || text === "पानी"){
+
+            card.style.cursor="pointer";
+
+            card.addEventListener("click",function(){
+
+                srOpenWater();
+
+            });
+
+        }
+
+    });
+
+    srUpdateWater();
+
+})();
+</script>
+
+
+<!-- ================= END WATER TRACKER ================= -->
+ <!-- ================= POSITIVITY FEATURE ================= -->
+
+<style>
+#srPositivePage{
+    position:fixed;
+    inset:0;
+    z-index:99998;
+    display:none;
+    overflow:auto;
+    color:white;
+    font-family:Arial,sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,220,120,.25),transparent 30%),
+        radial-gradient(circle at 80% 70%,rgba(120,255,210,.18),transparent 30%),
+        linear-gradient(135deg,#123d35,#176052,#0b3430);
+}
+
+.srPositiveInner{
+    min-height:100vh;
+    padding:22px 18px 45px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.srPositiveTop{
+    width:100%;
+    max-width:700px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.srPositiveBack{
+    border:1px solid rgba(255,255,255,.3);
+    background:rgba(255,255,255,.1);
+    color:white;
+    padding:9px 16px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+.srPositiveHeading{
+    text-align:center;
+    margin-top:70px;
+}
+
+.srPositiveIcon{
+    font-size:58px;
+    animation:srGlow 2s infinite alternate;
+}
+
+@keyframes srGlow{
+    from{transform:scale(1)}
+    to{transform:scale(1.1)}
+}
+
+.srPositiveHeading h1{
+    margin:14px 0 8px;
+    font-size:38px;
+}
+
+.srPositiveHeading p{
+    opacity:.75;
+}
+
+.srPositiveCard{
+    width:min(650px,92vw);
+    margin-top:45px;
+    padding:38px 28px;
+    text-align:center;
+    border-radius:30px;
+    background:rgba(255,255,255,.11);
+    border:1px solid rgba(255,255,255,.2);
+    backdrop-filter:blur(15px);
+    box-shadow:0 25px 70px rgba(0,0,0,.25);
+}
+
+#srPositiveMessage{
+    font-size:25px;
+    line-height:1.65;
+    min-height:120px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.4s;
+}
+
+.srPositiveCategory{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 15px;
+    border-radius:20px;
+    background:rgba(255,255,255,.12);
+    font-size:12px;
+    opacity:.8;
+}
+
+.srPositiveBtn{
+    margin-top:30px;
+    padding:15px 27px;
+    border:0;
+    border-radius:30px;
+    background:white;
+    color:#155247;
+    font-weight:bold;
+    font-size:15px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.srPositiveBtn:hover{
+    transform:translateY(-3px);
+}
+
+.srPositiveBtn:active{
+    transform:scale(.94);
+}
+
+.srPositiveCount{
+    margin-top:25px;
+    font-size:12px;
+    opacity:.55;
+}
+
+.srPositiveParticle{
+    position:fixed;
+    pointer-events:none;
+    font-size:22px;
+    animation:srFloat 3s ease-out forwards;
+}
+
+@keyframes srFloat{
+    0%{
+        transform:translateY(0) rotate(0);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-180px) rotate(180deg);
+        opacity:0;
+    }
+}
+
+.srPositiveChange{
+    animation:srMessage .45s ease;
+}
+
+@keyframes srMessage{
+    0%{
+        opacity:0;
+        transform:translateY(12px) scale(.97);
+    }
+    100%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@media(max-width:450px){
+    .srPositiveHeading{
+        margin-top:55px;
+    }
+
+    .srPositiveHeading h1{
+        font-size:31px;
+    }
+
+    #srPositiveMessage{
+        font-size:20px;
+    }
+
+    .srPositiveCard{
+        padding:30px 20px;
+    }
+}
+</style>
+
+
+<!-- POSITIVITY PAGE -->
+
+<div id="srPositivePage">
+
+    <div class="srPositiveInner">
+
+        <div class="srPositiveTop">
+
+            <button class="srPositiveBack" onclick="srClosePositive()">
+                ← Back
+            </button>
+
+            <div>✨ Positivity</div>
+
+        </div>
+
+
+        <div class="srPositiveHeading">
+
+            <div class="srPositiveIcon">✨</div>
+
+            <h1>Positivity</h1>
+
+            <p>
+                एक अच्छी सोच, एक बेहतर दिन।
+            </p>
+
+        </div>
+
+
+        <div class="srPositiveCard">
+
+            <div id="srPositiveMessage">
+                आज का दिन आपके लिए कुछ अच्छा लेकर आया है। 🌿
+            </div>
+
+            <div class="srPositiveCategory" id="srPositiveCategory">
+                🌿 Peace
+            </div>
+
+            <br>
+
+            <button class="srPositiveBtn" onclick="srNewPositive()">
+                ✨ नई Positive बात
+            </button>
+
+            <div class="srPositiveCount">
+                हर बार एक नई सोच • 500+ Messages
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+(function(){
+
+const messages = [
+
+["🌿 Peace","धीरे चलना भी आगे बढ़ना है। अपने मन को थोड़ा समय दीजिए।"],
+["✨ Motivation","आज का छोटा कदम कल की बड़ी सफलता बन सकता है।"],
+["💛 Self Love","आपको हर समय perfect होने की जरूरत नहीं है।"],
+["🌅 Hope","हर नया सवेरा एक नई शुरुआत का मौका देता है।"],
+["🌸 Gratitude","जो आपके पास है, उसकी कद्र करना भी एक खूबसूरत खुशी है।"],
+["🔥 Courage","डर होना कमजोरी नहीं है। उसके बावजूद आगे बढ़ना हिम्मत है।"],
+["🌿 Peace","अपने मन को शांत रखिए, जवाब कई बार शांति में मिलते हैं।"],
+["💫 Confidence","आप जितना सोचते हैं, उससे कहीं ज्यादा कर सकते हैं।"],
+["🌱 Growth","धीमी progress भी progress होती है।"],
+["☀️ Positive","आज अपने लिए एक अच्छी बात जरूर सोचिए।"],
+["💙 Hope","मुश्किल समय हमेशा नहीं रहता। अच्छे दिन फिर आते हैं।"],
+["🌻 Happiness","छोटी खुशियों को महसूस करना सीखिए, जिंदगी खूबसूरत लगेगी।"],
+["🕊️ Calm","हर बात का जवाब तुरंत देना जरूरी नहीं है।"],
+["⭐ Dream","आपके सपने आपके छोटे-छोटे प्रयासों से मजबूत होते हैं।"],
+["🌿 Mindset","जिस चीज को बदल सकते हैं उस पर ध्यान दें, बाकी को जाने दें।"],
+["💪 Strength","आपने पहले भी मुश्किल समय पार किया है।"],
+["🌸 Peace","आज खुद पर थोड़ा कम pressure और थोड़ा ज्यादा भरोसा रखिए।"],
+["✨ Future","आपका आज आपके आने वाले कल की नींव है।"],
+["🌈 Hope","एक खराब दिन पूरी जिंदगी को खराब नहीं करता।"],
+["💛 Gratitude","आज की एक छोटी अच्छी चीज को notice कीजिए।"],
+["🔥 Motivation","शुरुआत छोटी हो सकती है, लेकिन असर बड़ा हो सकता है।"],
+["🌱 Growth","हर दिन कुछ नया सीखना अपने आप में जीत है।"],
+["🕊️ Calm","कुछ देर शांत बैठना भी productive हो सकता है।"],
+["💫 Confidence","अपनी journey की तुलना किसी और की journey से मत कीजिए।"],
+["🌅 Hope","कल कैसा होगा यह आज की उम्मीद से भी बदल सकता है।"],
+["🌸 Happiness","मुस्कुराने के लिए हमेशा कोई बड़ी वजह जरूरी नहीं होती।"],
+["💙 Peace","अपने मन को वही बातें सुनाइए जो आपको मजबूत बनाती हैं।"],
+["⭐ Dreams","जो सपना आपको खुशी देता है, उसके लिए एक कदम आज उठाइए।"],
+["🌿 Positive","अच्छी सोच हर समस्या खत्म नहीं करती, लेकिन आपको मजबूत जरूर बनाती है।"],
+["💪 Courage","एक कदम आगे बढ़ना भी रुकने से बेहतर है।"]
+
+];
+
+
+/* EXTRA GENERATED VARIATIONS */
+
+const themes = [
+"आपके अंदर बहुत potential है।",
+"आपकी मेहनत बेकार नहीं जा रही।",
+"आपका बेहतर समय रास्ते में है।",
+"आपको खुद पर विश्वास रखना चाहिए।",
+"आप हर दिन थोड़ा और मजबूत बन रहे हैं।",
+"आपकी कोशिश मायने रखती है।",
+"आपकी जिंदगी में अच्छे पल अभी बाकी हैं।",
+"आपको अपनी progress पर गर्व होना चाहिए।",
+"आपका शांत मन आपकी ताकत है।",
+"आप आज से बेहतर कल बना सकते हैं।",
+"आपके छोटे फैसले बड़ा बदलाव ला सकते हैं।",
+"आपको अपनी journey पर भरोसा रखना चाहिए।",
+"आपमें सीखने और बढ़ने की क्षमता है।",
+"आपका एक अच्छा विचार पूरा दिन बदल सकता है।",
+"आप अपने लिए अच्छी जिंदगी बना सकते हैं।",
+"हर सुबह नई possibility लेकर आती है।",
+"आपको खुद को थोड़ा और मौका देना चाहिए।",
+"आपकी मेहनत का अपना समय जरूर आएगा।",
+"आपको अपनी छोटी जीत भी celebrate करनी चाहिए।",
+"आपका future आज से बन रहा है।"
+];
+
+const categories = [
+"✨ Motivation",
+"🌿 Peace",
+"💛 Self Love",
+"🌅 Hope",
+"🌸 Gratitude",
+"🔥 Courage",
+"💫 Confidence",
+"🌱 Growth",
+"🕊️ Calm",
+"🌈 Happiness"
+];
+
+
+/* 500+ UNIQUE COMBINATIONS */
+
+for(let i=0;i<520;i++){
+
+    const text =
+        themes[i % themes.length] +
+        " " +
+        themes[(i * 7 + 3) % themes.length];
+
+    messages.push([
+        categories[i % categories.length],
+        text
+    ]);
+
+}
+
+
+let lastIndex = -1;
+let shown = 0;
+
+
+window.srOpenPositive = function(){
+
+    document.getElementById("srPositivePage").style.display="block";
+
+    if(shown === 0){
+        srNewPositive();
+    }
+
+};
+
+
+window.srClosePositive = function(){
+
+    document.getElementById("srPositivePage").style.display="none";
+
+};
+
+
+window.srNewPositive = function(){
+
+    let index;
+
+    do{
+        index=Math.floor(Math.random()*messages.length);
+    }
+    while(index===lastIndex && messages.length>1);
+
+    lastIndex=index;
+
+    const message=document.getElementById("srPositiveMessage");
+    const category=document.getElementById("srPositiveCategory");
+
+    message.classList.remove("srPositiveChange");
+
+    void message.offsetWidth;
+
+    message.textContent=messages[index][1];
+    category.textContent=messages[index][0];
+
+    message.classList.add("srPositiveChange");
+
+    shown++;
+
+    srPositiveParticles();
+
+};
+
+
+function srPositiveParticles(){
+
+    const icons=["✨","🌿","🌸","💫","🕊️"];
+
+    for(let i=0;i<5;i++){
+
+        const p=document.createElement("div");
+
+        p.className="srPositiveParticle";
+        p.textContent=icons[Math.floor(Math.random()*icons.length)];
+
+        p.style.left=(20+Math.random()*60)+"%";
+        p.style.bottom="20%";
+
+        document.body.appendChild(p);
+
+        setTimeout(()=>{
+            p.remove();
+        },3000);
+
+    }
+
+}
+
+
+/* HOME POSITIVITY CARD */
+
+document.querySelectorAll(".card").forEach(card=>{
+
+    const heading=card.querySelector("h3");
+
+    if(!heading) return;
+
+    const text=heading.textContent.trim().toLowerCase();
+
+    if(
+        text.includes("positivity") ||
+        text.includes("positive") ||
+        text.includes("सकारात्मक")
+    ){
+
+        card.style.cursor="pointer";
+
+        card.addEventListener("click",function(){
+            srOpenPositive();
+        });
+
+    }
+
+});
+
+})();
+</script>
+
+<!-- ================= END POSITIVITY ================= -->
+ <!-- ================= SUKOON ZONE ================= -->
+
+<style>
+#srSukoonPage{
+    position:fixed;
+    inset:0;
+    z-index:99997;
+    display:none;
+    overflow:hidden;
+    color:white;
+    font-family:Arial,sans-serif;
+    background:
+        linear-gradient(rgba(7,45,38,.48),rgba(4,30,28,.68)),
+        linear-gradient(135deg,#164d3c,#39785d,#173f35);
+}
+
+.srSukoonInner{
+    min-height:100vh;
+    padding:22px 18px;
+    position:relative;
+    overflow:auto;
+}
+
+.srSukoonTop{
+    max-width:850px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.srSukoonBack{
+    border:1px solid rgba(255,255,255,.3);
+    background:rgba(255,255,255,.12);
+    color:white;
+    padding:9px 16px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+.srSukoonHero{
+    max-width:700px;
+    margin:70px auto 0;
+    text-align:center;
+}
+
+.srSukoonIcon{
+    font-size:65px;
+    animation:srLeafFloat 3s ease-in-out infinite;
+}
+
+@keyframes srLeafFloat{
+    0%,100%{transform:translateY(0) rotate(-3deg)}
+    50%{transform:translateY(-12px) rotate(3deg)}
+}
+
+.srSukoonHero h1{
+    font-size:42px;
+    margin:15px 0 8px;
+}
+
+.srSukoonHero p{
+    opacity:.82;
+    line-height:1.7;
+}
+
+.srSukoonThought{
+    max-width:650px;
+    margin:45px auto 0;
+    padding:35px 25px;
+    text-align:center;
+    border-radius:30px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.2);
+    backdrop-filter:blur(14px);
+    box-shadow:0 25px 70px rgba(0,0,0,.25);
+}
+
+.srSukoonThoughtIcon{
+    font-size:32px;
+}
+
+#srSukoonMessage{
+    margin:18px 0;
+    font-size:23px;
+    line-height:1.6;
+    min-height:75px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.srSukoonNew{
+    border:0;
+    border-radius:30px;
+    padding:13px 23px;
+    background:white;
+    color:#195345;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.srSukoonNew:hover{
+    transform:translateY(-3px);
+}
+
+.srSukoonNature{
+    max-width:800px;
+    margin:35px auto;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.srNatureBubble{
+    padding:12px 17px;
+    border-radius:25px;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(8px);
+    font-size:14px;
+}
+
+.srSukoonFlower{
+    position:absolute;
+    top:-40px;
+    pointer-events:none;
+    animation:srFlowerFall linear forwards;
+}
+
+@keyframes srFlowerFall{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+    10%{opacity:.9}
+    100%{
+        transform:translateY(110vh) translateX(100px) rotate(360deg);
+        opacity:0;
+    }
+}
+
+.srSukoonGlow{
+    position:absolute;
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    background:rgba(170,255,210,.12);
+    filter:blur(35px);
+    pointer-events:none;
+}
+
+.srGlowOne{
+    top:15%;
+    left:-100px;
+}
+
+.srGlowTwo{
+    bottom:5%;
+    right:-100px;
+}
+
+@keyframes srSukoonChange{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.srSukoonAnimate{
+    animation:srSukoonChange .5s ease;
+}
+
+@media(max-width:450px){
+    .srSukoonHero{
+        margin-top:55px;
+    }
+
+    .srSukoonHero h1{
+        font-size:34px;
+    }
+
+    #srSukoonMessage{
+        font-size:19px;
+    }
+}
+</style>
+
+
+<div id="srSukoonPage">
+
+    <div class="srSukoonGlow srGlowOne"></div>
+    <div class="srSukoonGlow srGlowTwo"></div>
+
+    <div class="srSukoonInner">
+
+        <div class="srSukoonTop">
+
+            <button class="srSukoonBack" onclick="srCloseSukoon()">
+                ← Back
+            </button>
+
+            <div>🌿 Sukoon Zone</div>
+
+        </div>
+
+
+        <div class="srSukoonHero">
+
+            <div class="srSukoonIcon">🌿</div>
+
+            <h1>Sukoon Zone</h1>
+
+            <p>
+                थोड़ा रुकिए... गहरी सांस लीजिए...
+                और अपने मन को कुछ पल आराम दीजिए। 🕊️
+            </p>
+
+        </div>
+
+
+        <div class="srSukoonThought">
+
+            <div class="srSukoonThoughtIcon">🌸</div>
+
+            <div id="srSukoonMessage">
+                शांति बाहर नहीं, कई बार हमारे अपने अंदर मिलती है।
+            </div>
+
+            <button class="srSukoonNew" onclick="srNewSukoon()">
+                🌿 एक और सुकून भरी बात
+            </button>
+
+        </div>
+
+
+        <div class="srSukoonNature">
+
+            <div class="srNatureBubble">🌸 Flowers</div>
+            <div class="srNatureBubble">🌿 Nature</div>
+            <div class="srNatureBubble">🕊️ Peace</div>
+            <div class="srNatureBubble">💧 Calm Water</div>
+            <div class="srNatureBubble">🌱 Fresh Mind</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+(function(){
+
+const sukoonMessages = [
+
+"शांति बाहर नहीं, कई बार हमारे अपने अंदर मिलती है।",
+"थोड़ा रुकना भी जिंदगी का हिस्सा है।",
+"आज अपने मन को उतना ही प्यार दीजिए जितना दूसरों को देते हैं।",
+"गहरी सांस लीजिए और इस पल को महसूस कीजिए।",
+"हर चीज का जवाब अभी मिलना जरूरी नहीं है।",
+"धीरे चलिए, जिंदगी कोई race नहीं है।",
+"प्रकृति हमें सिखाती है कि बदलाव भी खूबसूरत हो सकता है।",
+"अपने मन को कुछ देर शांत रहने दीजिए।",
+"आज की छोटी खुशी को महसूस कीजिए।",
+"आपको हर समय मजबूत दिखने की जरूरत नहीं है।",
+"एक शांत मन कई मुश्किलों को आसान बना सकता है।",
+"जो पल आपके पास है, वही सबसे सच्चा पल है।",
+"अपने अंदर की शांति को समय दीजिए।",
+"कुछ पल phone से दूर होकर nature को महसूस कीजिए।",
+"आपकी सांस आपको हमेशा वर्तमान में वापस ला सकती है।",
+"हर दिन खुद को थोड़ा आराम देना भी जरूरी है।",
+"बारिश, हवा, पेड़ और फूल — प्रकृति की अपनी भाषा है।",
+"आज अपने लिए कुछ शांत पल बचाकर रखिए।",
+"मन को हर बात पकड़कर रखने की जरूरत नहीं है।",
+"छोड़ देना कई बार सबसे सुंदर आराम होता है।",
+"आप safe हैं, आप धीरे-धीरे आगे बढ़ सकते हैं।",
+"एक गहरी सांस... और फिर एक शांत शुरुआत।",
+"अपने thoughts को आने दीजिए और जाने दीजिए।",
+"सुकून किसी destination का नाम नहीं, एक feeling है।",
+"आज बस इतना करें — खुद पर थोड़ा भरोसा रखें।"
+
+];
+
+let last=-1;
+
+window.srOpenSukoon=function(){
+
+    document.getElementById("srSukoonPage").style.display="block";
+
+    srFlowerRain();
+
+};
+
+window.srCloseSukoon=function(){
+
+    document.getElementById("srSukoonPage").style.display="none";
+
+};
+
+window.srNewSukoon=function(){
+
+    let index;
+
+    do{
+        index=Math.floor(Math.random()*sukoonMessages.length);
+    }while(index===last && sukoonMessages.length>1);
+
+    last=index;
+
+    const message=document.getElementById("srSukoonMessage");
+
+    message.classList.remove("srSukoonAnimate");
+
+    void message.offsetWidth;
+
+    message.textContent=sukoonMessages[index];
+
+    message.classList.add("srSukoonAnimate");
+
+};
+
+
+function srFlowerRain(){
+
+    const flowers=["🌸","🌺","🌼","🍃","🌿"];
+
+    for(let i=0;i<12;i++){
+
+        setTimeout(()=>{
+
+            const flower=document.createElement("div");
+
+            flower.className="srSukoonFlower";
+
+            flower.textContent=
+                flowers[Math.floor(Math.random()*flowers.length)];
+
+            flower.style.left=Math.random()*100+"%";
+
+            flower.style.fontSize=
+                (14+Math.random()*15)+"px";
+
+            flower.style.animationDuration=
+                (5+Math.random()*5)+"s";
+
+            document.getElementById("srSukoonPage")
+                .appendChild(flower);
+
+            setTimeout(()=>{
+                flower.remove();
+            },10000);
+
+        },i*250);
+
+    }
+
+}
+
+
+/* HOME SUKOON CARD */
+
+document.querySelectorAll(".card").forEach(card=>{
+
+    const heading=card.querySelector("h3");
+
+    if(!heading)return;
+
+    const text=heading.textContent.trim().toLowerCase();
+
+    if(
+        text.includes("sukoon") ||
+        text.includes("सुकून")
+    ){
+
+        card.style.cursor="pointer";
+
+        card.addEventListener("click",function(){
+
+            srOpenSukoon();
+
+        });
+
+    }
+
+});
+
+})();
+</script>
+
+<!-- ================= END SUKOON ZONE ================= -->
+ <!-- ================= SUKOON ZONE : FINAL FULL SCREEN FIX ================= -->
+
+<style>
+
+/* FULL SCREEN SUKOON */
+#srSukoonPage{
+    position:fixed !important;
+    inset:0 !important;
+    width:100vw !important;
+    height:100vh !important;
+    z-index:999999 !important;
+    display:none;
+    overflow:hidden !important;
+
+    color:white;
+    font-family:Arial,sans-serif;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(8,50,39,.25),
+            rgba(3,31,27,.72)
+        ),
+        linear-gradient(
+            135deg,
+            #1b6149,
+            #397c5c,
+            #183f34
+        );
+}
+
+/* CONTENT SCREEN */
+.srSukoonInner{
+    width:100%;
+    height:100%;
+    min-height:100vh;
+
+    padding:
+        max(18px,env(safe-area-inset-top))
+        max(18px,env(safe-area-inset-right))
+        max(18px,env(safe-area-inset-bottom))
+        max(18px,env(safe-area-inset-left));
+
+    display:flex;
+    flex-direction:column;
+
+    overflow:hidden;
+}
+
+/* TOP BAR */
+.srSukoonTop{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-shrink:0;
+}
+
+.srSukoonBack{
+    border:1px solid rgba(255,255,255,.3);
+    background:rgba(255,255,255,.12);
+    color:white;
+
+    padding:9px 16px;
+    border-radius:25px;
+
+    cursor:pointer;
+    backdrop-filter:blur(10px);
+}
+
+/* MAIN CENTER AREA */
+.srSukoonHero{
+    flex:1;
+
+    width:100%;
+    max-width:850px;
+
+    margin:auto;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    min-height:0;
+}
+
+/* ICON */
+.srSukoonIcon{
+    font-size:clamp(45px,8vw,70px);
+
+    animation:
+        srSukoonFloat 3s ease-in-out infinite,
+        srSukoonGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes srSukoonFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+@keyframes srSukoonGlow{
+    from{
+        filter:drop-shadow(0 0 5px rgba(255,255,255,.25));
+    }
+
+    to{
+        filter:drop-shadow(0 0 20px rgba(190,255,220,.55));
+    }
+}
+
+/* TITLE */
+.srSukoonHero h1{
+    margin:8px 0 5px;
+
+    font-size:
+        clamp(30px,6vw,48px);
+
+    letter-spacing:.5px;
+}
+
+.srSukoonHero p{
+    max-width:620px;
+
+    margin:0 auto;
+
+    font-size:
+        clamp(13px,2.5vw,17px);
+
+    line-height:1.6;
+
+    opacity:.82;
+}
+
+/* THOUGHT CARD */
+.srSukoonThought{
+    width:min(650px,92vw);
+
+    margin-top:20px;
+
+    padding:
+        clamp(20px,4vw,34px)
+        clamp(18px,5vw,30px);
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.11);
+
+    border:
+        1px solid rgba(255,255,255,.2);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.25);
+
+    flex-shrink:0;
+}
+
+.srSukoonThoughtIcon{
+    font-size:27px;
+}
+
+/* MESSAGE */
+#srSukoonMessage{
+    width:100%;
+
+    min-height:65px;
+
+    margin:12px 0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:
+        clamp(17px,4vw,23px);
+
+    line-height:1.55;
+
+    text-align:center;
+}
+
+/* BUTTON */
+.srSukoonNew{
+    border:0;
+
+    padding:12px 21px;
+
+    border-radius:30px;
+
+    background:white;
+    color:#195345;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.srSukoonNew:hover{
+    transform:translateY(-3px);
+}
+
+.srSukoonNew:active{
+    transform:scale(.94);
+}
+
+/* NATURE TAGS */
+.srSukoonNature{
+    width:100%;
+
+    display:flex;
+    justify-content:center;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    padding-top:15px;
+
+    flex-shrink:0;
+}
+
+.srNatureBubble{
+    padding:7px 12px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.09);
+
+    border:
+        1px solid rgba(255,255,255,.13);
+
+    font-size:11px;
+
+    opacity:.82;
+}
+
+/* GLOW */
+.srSukoonGlow{
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    border-radius:50%;
+
+    background:rgba(170,255,210,.12);
+
+    filter:blur(40px);
+
+    pointer-events:none;
+}
+
+.srGlowOne{
+    top:-80px;
+    left:-80px;
+}
+
+.srGlowTwo{
+    right:-90px;
+    bottom:-70px;
+}
+
+/* FLOATING FLOWERS */
+.srSukoonFlower{
+    position:absolute;
+
+    top:-50px;
+
+    pointer-events:none;
+
+    z-index:2;
+
+    animation:
+        srFlowerFall linear forwards;
+}
+
+@keyframes srFlowerFall{
+
+    0%{
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity:0;
+    }
+
+    10%{
+        opacity:.85;
+    }
+
+    100%{
+        transform:
+            translateY(110vh)
+            translateX(80px)
+            rotate(360deg);
+
+        opacity:0;
+    }
+}
+
+/* MESSAGE CHANGE */
+.srSukoonAnimate{
+    animation:
+        srSukoonMessage .45s ease;
+}
+
+@keyframes srSukoonMessage{
+
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* SMALL PHONES */
+@media(max-height:650px){
+
+    .srSukoonHero{
+        justify-content:flex-start;
+        padding-top:15px;
+    }
+
+    .srSukoonIcon{
+        font-size:42px;
+    }
+
+    .srSukoonHero h1{
+        font-size:28px;
+    }
+
+    .srSukoonHero p{
+        font-size:12px;
+    }
+
+    .srSukoonThought{
+        margin-top:12px;
+        padding:17px;
+    }
+
+    #srSukoonMessage{
+        min-height:50px;
+        font-size:16px;
+    }
+
+    .srSukoonNature{
+        padding-top:8px;
+    }
+
+}
+
+
+/* IPHONE SAFE SCREEN */
+@supports(height:100dvh){
+
+    #srSukoonPage{
+        height:100dvh !important;
+    }
+
+    .srSukoonInner{
+        height:100dvh;
+        min-height:100dvh;
+    }
+
+}
+
+</style>
+
+
+<script>
+
+/* ================= SUKOON FINAL CONTROLLER ================= */
+
+(function(){
+
+    const page = document.getElementById("srSukoonPage");
+
+    if(!page) return;
+
+
+    /* OPEN */
+
+    window.srOpenSukoon = function(){
+
+        page.style.display="block";
+
+        document.body.style.overflow="hidden";
+
+        srSukoonFlowerRain();
+
+    };
+
+
+    /* CLOSE */
+
+    window.srCloseSukoon = function(){
+
+        page.style.display="none";
+
+        document.body.style.overflow="";
+
+    };
+
+
+    /* NEW THOUGHT */
+
+    window.srNewSukoon = function(){
+
+        const thoughts=[
+
+            "शांति बाहर नहीं, कई बार हमारे अपने अंदर मिलती है।",
+
+            "थोड़ा रुकना भी जिंदगी का हिस्सा है।",
+
+            "आज अपने मन को थोड़ा आराम दीजिए।",
+
+            "एक गहरी सांस लीजिए और इस पल को महसूस कीजिए।",
+
+            "हर सवाल का जवाब तुरंत मिलना जरूरी नहीं है।",
+
+            "धीरे चलिए, जिंदगी कोई race नहीं है।",
+
+            "प्रकृति हमें सिखाती है कि बदलाव भी खूबसूरत हो सकता है।",
+
+            "अपने मन को कुछ देर शांत रहने दीजिए।",
+
+            "आज की छोटी खुशी को महसूस कीजिए।",
+
+            "आपको हर समय strong दिखने की जरूरत नहीं है।",
+
+            "एक शांत मन आपकी बड़ी ताकत है।",
+
+            "जो पल आपके पास है, उसे महसूस कीजिए।",
+
+            "अपने अंदर की शांति को समय दीजिए।",
+
+            "आज अपने लिए कुछ शांत पल बचाकर रखिए।",
+
+            "कुछ चीजों को जाने देना भी सुकून देता है।",
+
+            "आपको अपनी journey पर भरोसा रखना चाहिए।",
+
+            "एक गहरी सांस... और एक शांत शुरुआत।",
+
+            "मन को हर बात पकड़कर रखने की जरूरत नहीं है।",
+
+            "सुकून किसी जगह का नाम नहीं, एक feeling है।",
+
+            "आज बस खुद पर थोड़ा भरोसा रखिए।",
+
+            "हर दिन खुद को थोड़ा आराम देना भी जरूरी है।",
+
+            "छोटी खुशियां भी जिंदगी को खूबसूरत बनाती हैं।",
+
+            "आपका शांत मन आपकी सबसे खूबसूरत ताकत है।"
+
+        ];
+
+
+        let old =
+            page.dataset.sukoonLast || "";
+
+        let index;
+
+        do{
+
+            index=
+                Math.floor(
+                    Math.random()*thoughts.length
+                );
+
+        }while(
+            String(index)===old &&
+            thoughts.length>1
+        );
+
+
+        page.dataset.sukoonLast=index;
+
+
+        const box=
+            document.getElementById(
+                "srSukoonMessage"
+            );
+
+
+        box.classList.remove(
+            "srSukoonAnimate"
+        );
+
+        void box.offsetWidth;
+
+        box.textContent=
+            thoughts[index];
+
+        box.classList.add(
+            "srSukoonAnimate"
+        );
+
+    };
+
+
+    /* FLOWERS */
+
+    function srSukoonFlowerRain(){
+
+        const flowers=[
+            "🌸",
+            "🌺",
+            "🌼",
+            "🍃",
+            "🌿"
+        ];
+
+
+        for(let i=0;i<10;i++){
+
+            setTimeout(function(){
+
+                const flower=
+                    document.createElement("div");
+
+                flower.className=
+                    "srSukoonFlower";
+
+                flower.textContent=
+                    flowers[
+                        Math.floor(
+                            Math.random()*flowers.length
+                        )
+                    ];
+
+
+                flower.style.left=
+                    Math.random()*100+"%";
+
+
+                flower.style.fontSize=
+                    (14+
+                    Math.random()*13)+"px";
+
+
+                flower.style.animationDuration=
+                    (6+
+                    Math.random()*4)+"s";
+
+
+                page.appendChild(flower);
+
+
+                setTimeout(function(){
+
+                    flower.remove();
+
+                },10000);
+
+
+            },i*350);
+
+        }
+
+    }
+
+
+    /* HOME SUKOON CARD */
+
+    document.querySelectorAll(".card")
+    .forEach(function(card){
+
+        const heading=
+            card.querySelector("h3");
+
+        if(!heading) return;
+
+
+        const text=
+            heading.textContent
+            .trim()
+            .toLowerCase();
+
+
+        if(
+            text.includes("sukoon") ||
+            text.includes("सुकून")
+        ){
+
+            card.style.cursor="pointer";
+
+            card.onclick=
+                function(){
+
+                    srOpenSukoon();
+
+                };
+
+        }
+
+    });
+
+
+})();
+
+</script>
+
+<!-- ================= END SUKOON FINAL FIX ================= -->
+<!-- ================= RELAX ROOM 🌙 ================= -->
+
+<style>
+#srRelaxPage{
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100dvh;
+    z-index:999999;
+    display:none;
+    overflow:hidden;
+    color:white;
+    font-family:Arial,sans-serif;
+    background:
+        radial-gradient(circle at 50% 18%,rgba(125,150,210,.18),transparent 25%),
+        linear-gradient(180deg,#071126 0%,#0b1730 55%,#050b18 100%);
+}
+
+.srRelaxInner{
+    width:100%;
+    height:100%;
+    padding:
+        max(18px,env(safe-area-inset-top))
+        max(18px,env(safe-area-inset-right))
+        max(18px,env(safe-area-inset-bottom))
+        max(18px,env(safe-area-inset-left));
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+.srRelaxTop{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-shrink:0;
+}
+
+.srRelaxBack{
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(255,255,255,.08);
+    color:white;
+    padding:9px 16px;
+    border-radius:25px;
+    cursor:pointer;
+    backdrop-filter:blur(10px);
+}
+
+/* STARS */
+
+.srStars{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.srStar{
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:white;
+    animation:srTwinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes srTwinkle{
+    from{
+        opacity:.2;
+        transform:scale(.7);
+    }
+    to{
+        opacity:1;
+        transform:scale(1.5);
+    }
+}
+
+/* MOON */
+
+.srMoon{
+    position:absolute;
+    top:9%;
+    right:12%;
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    background:#fff9d9;
+    box-shadow:
+        0 0 25px rgba(255,250,210,.45),
+        0 0 70px rgba(255,250,210,.15);
+    animation:srMoonFloat 5s ease-in-out infinite;
+}
+
+.srMoon:after{
+    content:"";
+    position:absolute;
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    background:#09142b;
+    top:-10px;
+    left:24px;
+}
+
+@keyframes srMoonFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(8px)}
+}
+
+/* CENTER */
+
+.srRelaxCenter{
+    flex:1;
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    z-index:2;
+}
+
+.srRelaxIcon{
+    font-size:clamp(38px,7vw,55px);
+    margin-bottom:8px;
+}
+
+.srRelaxCenter h1{
+    margin:0 0 7px;
+    font-size:clamp(30px,7vw,46px);
+}
+
+.srRelaxCenter>p{
+    opacity:.7;
+    font-size:14px;
+}
+
+/* BREATHING CIRCLE */
+
+.srBreathCircle{
+    width:min(220px,52vw);
+    height:min(220px,52vw);
+    margin:25px 0 18px;
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(185,215,255,.28),
+            rgba(90,130,210,.08)
+        );
+
+    border:1px solid rgba(220,235,255,.3);
+
+    box-shadow:
+        0 0 30px rgba(130,170,255,.12),
+        inset 0 0 30px rgba(190,220,255,.08);
+
+    transition:
+        transform 4s ease-in-out,
+        box-shadow 4s ease-in-out;
+}
+
+.srBreathCircle.inhale{
+    transform:scale(1.22);
+    box-shadow:
+        0 0 55px rgba(150,190,255,.3),
+        inset 0 0 45px rgba(190,220,255,.15);
+}
+
+.srBreathCircle.hold{
+    transform:scale(1.22);
+}
+
+.srBreathCircle.exhale{
+    transform:scale(.82);
+    box-shadow:
+        0 0 15px rgba(130,170,255,.08),
+        inset 0 0 20px rgba(190,220,255,.05);
+}
+
+.srBreathText{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+#srBreathAction{
+    font-size:21px;
+    font-weight:bold;
+}
+
+#srBreathCount{
+    font-size:13px;
+    opacity:.65;
+}
+
+/* BUTTONS */
+
+.srBreathControls{
+    display:flex;
+    gap:10px;
+}
+
+.srBreathBtn{
+    border:0;
+    padding:12px 21px;
+    border-radius:28px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.25s;
+}
+
+.srBreathStart{
+    background:white;
+    color:#101c38;
+}
+
+.srBreathStop{
+    background:rgba(255,255,255,.1);
+    color:white;
+    border:1px solid rgba(255,255,255,.2);
+}
+
+.srBreathBtn:active{
+    transform:scale(.94);
+}
+
+/* FOOT NOTE */
+
+.srRelaxNote{
+    flex-shrink:0;
+    text-align:center;
+    opacity:.48;
+    font-size:11px;
+    padding:10px 0 4px;
+}
+
+@media(max-height:650px){
+
+    .srMoon{
+        width:60px;
+        height:60px;
+        top:7%;
+    }
+
+    .srMoon:after{
+        width:60px;
+        height:60px;
+        left:17px;
+        top:-7px;
+    }
+
+    .srBreathCircle{
+        width:155px;
+        height:155px;
+        margin:15px 0;
+    }
+
+    #srBreathAction{
+        font-size:18px;
+    }
+}
+
+@media(max-width:430px){
+
+    .srMoon{
+        right:7%;
+    }
+
+    .srRelaxCenter>p{
+        max-width:280px;
+    }
+}
+</style>
+
+
+<div id="srRelaxPage">
+
+    <div class="srStars" id="srRelaxStars"></div>
+
+    <div class="srMoon"></div>
+
+    <div class="srRelaxInner">
+
+        <div class="srRelaxTop">
+
+            <button class="srRelaxBack" onclick="srCloseRelax()">
+                ← Back
+            </button>
+
+            <div>🌙 Relax Room</div>
+
+        </div>
+
+
+        <div class="srRelaxCenter">
+
+            <div class="srRelaxIcon">🌙</div>
+
+            <h1>Relax Room</h1>
+
+            <p>
+                Slow down. Breathe. Let your mind become quiet.
+            </p>
+
+
+            <div class="srBreathCircle" id="srBreathCircle">
+
+                <div class="srBreathText">
+
+                    <div id="srBreathAction">
+                        Ready
+                    </div>
+
+                    <div id="srBreathCount">
+                        Press Start
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="srBreathControls">
+
+                <button
+                    class="srBreathBtn srBreathStart"
+                    onclick="srStartBreathing()"
+                >
+                    🌿 Start
+                </button>
+
+                <button
+                    class="srBreathBtn srBreathStop"
+                    onclick="srStopBreathing()"
+                >
+                    Stop
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="srRelaxNote">
+            🌌 Take a slow breath and give yourself a peaceful moment.
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+(function(){
+
+    const page =
+        document.getElementById("srRelaxPage");
+
+    if(!page) return;
+
+
+    const circle =
+        document.getElementById("srBreathCircle");
+
+    const action =
+        document.getElementById("srBreathAction");
+
+    const count =
+        document.getElementById("srBreathCount");
+
+
+    let timer=null;
+    let running=false;
+
+
+    /* CREATE STARS */
+
+    const stars =
+        document.getElementById("srRelaxStars");
+
+    for(let i=0;i<65;i++){
+
+        const star =
+            document.createElement("span");
+
+        star.className="srStar";
+
+        star.style.left =
+            Math.random()*100+"%";
+
+        star.style.top =
+            Math.random()*100+"%";
+
+        star.style.animationDelay =
+            Math.random()*3+"s";
+
+        star.style.animationDuration =
+            (1.5+Math.random()*3)+"s";
+
+        stars.appendChild(star);
+
+    }
+
+
+    /* OPEN */
+
+    window.srOpenRelax=function(){
+
+        page.style.display="block";
+
+        document.body.style.overflow="hidden";
+
+    };
+
+
+    /* CLOSE */
+
+    window.srCloseRelax=function(){
+
+        srStopBreathing();
+
+        page.style.display="none";
+
+        document.body.style.overflow="";
+
+    };
+
+
+    /* BREATHING */
+
+    window.srStartBreathing=function(){
+
+        if(running) return;
+
+        running=true;
+
+        srBreathingCycle();
+
+    };
+
+
+    function srBreathingCycle(){
+
+        if(!running) return;
+
+
+        /* INHALE */
+
+        circle.className=
+            "srBreathCircle inhale";
+
+        action.textContent=
+            "Inhale";
+
+        count.textContent=
+            "धीरे से सांस अंदर लें";
+
+
+        timer=setTimeout(function(){
+
+            if(!running)return;
+
+
+            /* HOLD */
+
+            circle.className=
+                "srBreathCircle hold";
+
+            action.textContent=
+                "Hold";
+
+            count.textContent=
+                "शांत रहें";
+
+
+            timer=setTimeout(function(){
+
+                if(!running)return;
+
+
+                /* EXHALE */
+
+                circle.className=
+                    "srBreathCircle exhale";
+
+                action.textContent=
+                    "Exhale";
+
+                count.textContent=
+                    "धीरे से सांस बाहर छोड़ें";
+
+
+                timer=setTimeout(function(){
+
+                    if(!running)return;
+
+                    srBreathingCycle();
+
+                },4000);
+
+            },2.5*1000);
+
+        },4000);
+
+    }
+
+
+    /* STOP */
+
+    window.srStopBreathing=function(){
+
+        running=false;
+
+        clearTimeout(timer);
+
+        circle.className="srBreathCircle";
+
+        action.textContent="Ready";
+
+        count.textContent="Press Start";
+
+    };
+
+
+    /* HOME RELAX CARD */
+
+    document.querySelectorAll(".card")
+    .forEach(function(card){
+
+        const heading =
+            card.querySelector("h3");
+
+        if(!heading)return;
+
+        const text =
+            heading.textContent
+            .trim()
+            .toLowerCase();
+
+
+        if(
+            text.includes("relax room") ||
+            text.includes("रिलैक्स रूम")
+        ){
+
+            card.style.cursor="pointer";
+
+            card.onclick=function(){
+
+                srOpenRelax();
+
+            };
+
+        }
+
+    });
+
+
+})();
+</script>
+
+<!-- ================= END RELAX ROOM ================= -->
+<!-- ================= ANGRY RELIEF 😤 ================= -->
+
+<style>
+#srAngryPage{
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100dvh;
+    z-index:999999;
+    display:none;
+    overflow:hidden;
+    color:white;
+    font-family:Arial,sans-serif;
+    background:
+        radial-gradient(circle at 50% 35%,rgba(255,150,100,.16),transparent 28%),
+        linear-gradient(160deg,#351f2a,#29213b,#11182c);
+}
+
+.srAngryInner{
+    width:100%;
+    height:100%;
+    padding:
+        max(18px,env(safe-area-inset-top))
+        max(18px,env(safe-area-inset-right))
+        max(18px,env(safe-area-inset-bottom))
+        max(18px,env(safe-area-inset-left));
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+.srAngryTop{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-shrink:0;
+}
+
+.srAngryBack{
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(255,255,255,.09);
+    color:white;
+    padding:9px 16px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+.srAngryCenter{
+    flex:1;
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.srAngryIcon{
+    font-size:65px;
+    transition:.25s;
+}
+
+.srAngryCenter h1{
+    font-size:clamp(30px,7vw,45px);
+    margin:8px 0;
+}
+
+.srAngryCenter>p{
+    opacity:.72;
+    max-width:450px;
+    line-height:1.6;
+}
+
+/* TAP AREA */
+
+.srReliefOrb{
+    width:min(210px,52vw);
+    height:min(210px,52vw);
+    margin:25px 0 20px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.2),
+            rgba(255,255,255,.04)
+        );
+
+    border:1px solid rgba(255,255,255,.25);
+
+    box-shadow:
+        0 0 45px rgba(255,180,150,.13),
+        inset 0 0 40px rgba(255,255,255,.06);
+
+    transition:.25s;
+}
+
+.srReliefOrb:active{
+    transform:scale(.91);
+}
+
+#srReliefEmoji{
+    font-size:78px;
+    transition:.3s;
+}
+
+.srReliefOrb.srShake{
+    animation:srReliefShake .38s ease;
+}
+
+@keyframes srReliefShake{
+
+    0%{transform:translateX(0) rotate(0)}
+
+    20%{transform:translateX(-10px) rotate(-2deg)}
+
+    40%{transform:translateX(10px) rotate(2deg)}
+
+    60%{transform:translateX(-7px) rotate(-1deg)}
+
+    80%{transform:translateX(7px) rotate(1deg)}
+
+    100%{transform:translateX(0) rotate(0)}
+
+}
+
+/* MESSAGE */
+
+.srReliefMessage{
+    min-height:58px;
+    max-width:500px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+    line-height:1.55;
+
+    opacity:.9;
+
+    transition:.35s;
+}
+
+.srReliefCount{
+    margin-top:12px;
+    font-size:11px;
+    opacity:.45;
+}
+
+/* BOTTOM */
+
+.srAngryHint{
+    flex-shrink:0;
+    text-align:center;
+    font-size:11px;
+    opacity:.48;
+    padding:10px 0 5px;
+}
+
+@keyframes srEmojiPop{
+
+    0%{
+        transform:scale(.7);
+        opacity:.3;
+    }
+
+    60%{
+        transform:scale(1.15);
+        opacity:1;
+    }
+
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+
+.srEmojiChange{
+    animation:srEmojiPop .35s ease;
+}
+
+@media(max-height:650px){
+
+    .srAngryIcon{
+        font-size:45px;
+    }
+
+    .srReliefOrb{
+        width:155px;
+        height:155px;
+        margin:15px 0;
+    }
+
+    #srReliefEmoji{
+        font-size:58px;
+    }
+
+    .srReliefMessage{
+        font-size:15px;
+    }
+
+}
+</style>
+
+
+<div id="srAngryPage">
+
+    <div class="srAngryInner">
+
+        <div class="srAngryTop">
+
+            <button
+                class="srAngryBack"
+                onclick="srCloseAngry()">
+                ← Back
+            </button>
+
+            <div>😤 Angry Relief</div>
+
+        </div>
+
+
+        <div class="srAngryCenter">
+
+            <div class="srAngryIcon">
+                🌿
+            </div>
+
+            <h1>Angry Relief</h1>
+
+            <p>
+                जब मन भारी लगे, यहाँ tap करें और
+                अपना ध्यान धीरे-धीरे शांत करें।
+            </p>
+
+
+            <div
+                class="srReliefOrb"
+                id="srReliefOrb"
+                onclick="srReliefTap()">
+
+                <div id="srReliefEmoji">
+                    😤
+                </div>
+
+            </div>
+
+
+            <div
+                class="srReliefMessage"
+                id="srReliefMessage">
+
+                एक पल रुकिए... गहरी सांस लीजिए।
+                आप इस पल को संभाल सकते हैं। 🌿
+
+            </div>
+
+
+            <div
+                class="srReliefCount"
+                id="srReliefCount">
+
+                Tap whenever you need a calm moment.
+
+            </div>
+
+        </div>
+
+
+        <div class="srAngryHint">
+            🌿 धीरे-धीरे सांस लें • अपने मन को शांत होने का समय दें
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+(function(){
+
+    const page =
+        document.getElementById("srAngryPage");
+
+    if(!page)return;
+
+
+    const emojis=[
+        "😤",
+        "😮‍💨",
+        "😌",
+        "🌿",
+        "🕊️",
+        "🌸",
+        "🙂",
+        "💙"
+    ];
+
+
+    const messages=[
+
+        "एक पल रुकिए... गहरी सांस लीजिए।",
+
+        "आपको अभी कोई जवाब देने की जरूरत नहीं है।",
+
+        "धीरे सांस लें और अपने शरीर को relax होने दें।",
+
+        "जो महसूस हो रहा है, उसे थोड़ा समय दीजिए।",
+
+        "आप अपने reaction से ज्यादा मजबूत हैं।",
+
+        "एक शांत पल आपके पूरे mood को बदल सकता है।",
+
+        "थोड़ा पानी पीजिए और कुछ देर आराम कीजिए।",
+
+        "अभी सिर्फ सांस पर ध्यान दीजिए।",
+
+        "आपको हर बात तुरंत solve करने की जरूरत नहीं है।",
+
+        "अपने मन को थोड़ा space दीजिए।",
+
+        "धीरे-धीरे... सब कुछ थोड़ा आसान महसूस हो सकता है।",
+
+        "आप control वापस अपने हाथ में ले सकते हैं।",
+
+        "एक deep breath... फिर अगला छोटा कदम।",
+
+        "इस पल को गुजरने दीजिए।",
+
+        "शांत रहना भी एक strength है।"
+
+    ];
+
+
+    let tapCount=0;
+    let lastEmoji=-1;
+    let lastMessage=-1;
+
+
+    window.srOpenAngry=function(){
+
+        page.style.display="block";
+
+        document.body.style.overflow="hidden";
+
+    };
+
+
+    window.srCloseAngry=function(){
+
+        page.style.display="none";
+
+        document.body.style.overflow="";
+
+    };
+
+
+    window.srReliefTap=function(){
+
+        tapCount++;
+
+
+        const orb=
+            document.getElementById(
+                "srReliefOrb"
+            );
+
+        const emoji=
+            document.getElementById(
+                "srReliefEmoji"
+            );
+
+        const message=
+            document.getElementById(
+                "srReliefMessage"
+            );
+
+
+        /* SHAKE */
+
+        orb.classList.remove("srShake");
+
+        void orb.offsetWidth;
+
+        orb.classList.add("srShake");
+
+
+        /* NEW EMOJI */
+
+        let e;
+
+        do{
+
+            e=Math.floor(
+                Math.random()*emojis.length
+            );
+
+        }while(
+            e===lastEmoji &&
+            emojis.length>1
+        );
+
+        lastEmoji=e;
+
+
+        emoji.classList.remove("srEmojiChange");
+
+        void emoji.offsetWidth;
+
+        emoji.textContent=emojis[e];
+
+        emoji.classList.add("srEmojiChange");
+
+
+        /* NEW MESSAGE */
+
+        let m;
+
+        do{
+
+            m=Math.floor(
+                Math.random()*messages.length
+            );
+
+        }while(
+            m===lastMessage &&
+            messages.length>1
+        );
+
+        lastMessage=m;
+
+
+        message.textContent=
+            messages[m];
+
+
+        document.getElementById(
+            "srReliefCount"
+        ).textContent=
+            "Calm moments: "+tapCount;
+
+    };
+
+
+    /* HOME CARD */
+
+    document.querySelectorAll(".card")
+    .forEach(function(card){
+
+        const heading=
+            card.querySelector("h3");
+
+        if(!heading)return;
+
+
+        const text=
+            heading.textContent
+            .trim()
+            .toLowerCase();
+
+
+        if(
+            text.includes("angry") ||
+            text.includes("anger") ||
+            text.includes("गुस्सा")
+        ){
+
+            card.style.cursor="pointer";
+
+            card.onclick=function(){
+
+                srOpenAngry();
+
+            };
+
+        }
+
+    });
+
+})();
+</script>
+
+<!-- ================= END ANGRY RELIEF ================= -->
+ <!-- ================= SERENITY : MISSING FEATURE CARDS ================= -->
+
+<style>
+
+.srExtraCards{
+    max-width:1050px;
+    margin:15px auto 0;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.srExtraCard{
+    padding:22px 16px;
+    text-align:center;
+    border-radius:20px;
+
+    background:rgba(255,255,255,.11);
+    border:1px solid rgba(255,255,255,.18);
+
+    backdrop-filter:blur(12px);
+
+    cursor:pointer;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease;
+}
+
+.srExtraCard:hover{
+    transform:translateY(-5px);
+    background:rgba(255,255,255,.16);
+    border-color:rgba(255,255,255,.35);
+}
+
+.srExtraCard:active{
+    transform:scale(.96);
+}
+
+.srExtraIcon{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.srExtraCard h3{
+    font-size:16px;
+    margin-bottom:6px;
+}
+
+.srExtraCard p{
+    font-size:12px;
+    opacity:.7;
+}
+
+@media(max-width:750px){
+
+    .srExtraCards{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+}
+
+</style>
+
+
+<script>
+
+(function(){
+
+    /* FIND HOME CARD AREA */
+
+    const cards = document.querySelector(".cards");
+
+    if(!cards) return;
+
+
+    /* DON'T ADD DUPLICATES */
+
+    if(document.getElementById("srExtraCards")){
+        return;
+    }
+
+
+    /* CREATE NEW CARD AREA */
+
+    const extra = document.createElement("section");
+
+    extra.id="srExtraCards";
+
+    extra.className="srExtraCards";
+
+
+    extra.innerHTML=`
+
+        <div class="srExtraCard"
+             onclick="srOpenPositive && srOpenPositive()">
+
+            <div class="srExtraIcon">✨</div>
+
+            <h3>Positivity</h3>
+
+            <p>Positive Thoughts</p>
+
+        </div>
+
+
+        <div class="srExtraCard"
+             onclick="srOpenAngry && srOpenAngry()">
+
+            <div class="srExtraIcon">😤</div>
+
+            <h3>Angry Relief</h3>
+
+            <p>Release & Relax</p>
+
+        </div>
+
+
+        <div class="srExtraCard"
+             onclick="srOpenNature && srOpenNature()">
+
+            <div class="srExtraIcon">🌳</div>
+
+            <h3>Welcome to Nature</h3>
+
+            <p>Explore Nature</p>
+
+        </div>
+
+    `;
+
+
+    /* PUT BELOW EXISTING 4 CARDS */
+
+    cards.parentNode.insertBefore(
+        extra,
+        cards.nextSibling
+    );
+
+
+})();
+
+</script>
+
+<!-- ================= END MISSING FEATURE CARDS ================= -->
+ <!-- ================= WELCOME TO NATURE 🌳 ================= -->
+
+<style>
+
+#srNaturePage{
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100dvh;
+    z-index:999999;
+    display:none;
+    overflow:hidden;
+    color:white;
+    font-family:Arial,sans-serif;
+    background:#102f28;
+}
+
+.srNatureInner{
+    width:100%;
+    height:100%;
+    padding:
+        max(18px,env(safe-area-inset-top))
+        max(18px,env(safe-area-inset-right))
+        max(18px,env(safe-area-inset-bottom))
+        max(18px,env(safe-area-inset-left));
+
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+.srNatureTop{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-shrink:0;
+    position:relative;
+    z-index:20;
+}
+
+.srNatureBack{
+    border:1px solid rgba(255,255,255,.3);
+    background:rgba(0,0,0,.18);
+    color:white;
+    padding:9px 16px;
+    border-radius:25px;
+    cursor:pointer;
+    backdrop-filter:blur(10px);
+}
+
+/* MAIN */
+
+.srNatureMain{
+    flex:1;
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.srNatureTitle{
+    text-align:center;
+    position:relative;
+    z-index:10;
+}
+
+.srNatureTitle .icon{
+    font-size:50px;
+}
+
+.srNatureTitle h1{
+    margin:8px 0;
+    font-size:clamp(30px,7vw,46px);
+}
+
+.srNatureTitle p{
+    opacity:.8;
+    font-size:14px;
+}
+
+/* SCENE */
+
+.srNatureScene{
+    position:relative;
+    width:min(850px,94vw);
+    height:min(390px,52vh);
+    margin:20px auto 15px;
+    border-radius:30px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.2);
+    box-shadow:0 25px 70px rgba(0,0,0,.35);
+    transition:background .7s ease;
+}
+
+/* FOREST */
+
+.srForest{
+    background:
+        linear-gradient(
+            180deg,
+            #78bca1 0%,
+            #a7d3a2 48%,
+            #28583e 49%,
+            #102f22 100%
+        );
+}
+
+.srForest:before{
+    content:"🌲   🌲   🌳   🌲   🌳   🌲   🌲";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:65px;
+    text-align:center;
+    font-size:65px;
+    letter-spacing:8px;
+    white-space:nowrap;
+}
+
+.srForest:after{
+    content:"🦋       🕊️       🦋";
+    position:absolute;
+    top:65px;
+    left:0;
+    right:0;
+    text-align:center;
+    font-size:25px;
+    animation:srNatureFly 7s linear infinite;
+}
+
+@keyframes srNatureFly{
+    0%{transform:translateX(-20%)}
+    50%{transform:translateX(20%)}
+    100%{transform:translateX(-20%)}
+}
+
+
+/* MOUNTAIN */
+
+.srMountain{
+    background:
+        linear-gradient(
+            180deg,
+            #78bde0 0%,
+            #d6e6df 55%,
+            #547b68 56%,
+            #244737 100%
+        );
+}
+
+.srMountain:before{
+    content:"🏔️  🏔️  🏔️";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:65px;
+    text-align:center;
+    font-size:115px;
+    letter-spacing:15px;
+}
+
+.srMountain:after{
+    content:"☀️";
+    position:absolute;
+    top:35px;
+    right:13%;
+    font-size:55px;
+    filter:drop-shadow(0 0 20px rgba(255,240,150,.7));
+}
+
+
+/* RIVER */
+
+.srRiver{
+    background:
+        linear-gradient(
+            180deg,
+            #91cfe4 0%,
+            #d7eee9 42%,
+            #4e997f 43%,
+            #145c70 100%
+        );
+}
+
+.srRiver:before{
+    content:"🌳       🌳       🌲       🌳";
+    position:absolute;
+    left:0;
+    right:0;
+    top:45px;
+    text-align:center;
+    font-size:60px;
+}
+
+.srRiver:after{
+    content:"💧 〰️ 💧 〰️ 💧 〰️ 💧";
+    position:absolute;
+    left:-10%;
+    width:120%;
+    bottom:75px;
+    text-align:center;
+    font-size:45px;
+    animation:srWaterMove 3s linear infinite;
+}
+
+@keyframes srWaterMove{
+    0%{transform:translateX(-5%)}
+    50%{transform:translateX(5%)}
+    100%{transform:translateX(-5%)}
+}
+
+
+/* GARDEN */
+
+.srGarden{
+    background:
+        linear-gradient(
+            180deg,
+            #9ed9e3 0%,
+            #d9efd4 48%,
+            #66a85e 49%,
+            #245d3b 100%
+        );
+}
+
+.srGarden:before{
+    content:"🌸  🌷  🌼  🌻  🌸  🌷  🌼";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:55px;
+    text-align:center;
+    font-size:52px;
+    letter-spacing:5px;
+}
+
+.srGarden:after{
+    content:"🦋   🦋   🐝";
+    position:absolute;
+    top:70px;
+    left:0;
+    right:0;
+    text-align:center;
+    font-size:28px;
+    animation:srGardenFly 5s ease-in-out infinite;
+}
+
+@keyframes srGardenFly{
+    0%,100%{transform:translateX(-12%) translateY(0)}
+    50%{transform:translateX(12%) translateY(-15px)}
+}
+
+
+/* SCENE LABEL */
+
+.srNatureLabel{
+    position:absolute;
+    left:18px;
+    bottom:16px;
+    padding:8px 14px;
+    border-radius:20px;
+    background:rgba(0,0,0,.25);
+    backdrop-filter:blur(8px);
+    font-size:13px;
+}
+
+
+/* CONTROLS */
+
+.srNatureControls{
+    display:flex;
+    gap:9px;
+    justify-content:center;
+    flex-wrap:wrap;
+    position:relative;
+    z-index:10;
+}
+
+.srNatureBtn{
+    border:1px solid rgba(255,255,255,.22);
+    background:rgba(255,255,255,.11);
+    color:white;
+    padding:10px 15px;
+    border-radius:24px;
+    cursor:pointer;
+    backdrop-filter:blur(10px);
+    transition:.25s;
+}
+
+.srNatureBtn:hover{
+    transform:translateY(-3px);
+    background:rgba(255,255,255,.2);
+}
+
+.srNatureBtn.active{
+    background:white;
+    color:#245a49;
+}
+
+
+/* BOTTOM */
+
+.srNatureHint{
+    text-align:center;
+    font-size:11px;
+    opacity:.5;
+    padding:9px 0 3px;
+    flex-shrink:0;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .srNatureScene{
+        height:42vh;
+        min-height:245px;
+        border-radius:24px;
+    }
+
+    .srNatureTitle .icon{
+        font-size:40px;
+    }
+
+    .srNatureTitle h1{
+        font-size:30px;
+    }
+
+    .srNatureTitle p{
+        font-size:12px;
+    }
+
+    .srForest:before,
+    .srRiver:before{
+        font-size:42px;
+    }
+
+    .srMountain:before{
+        font-size:75px;
+    }
+
+    .srGarden:before{
+        font-size:38px;
+    }
+
+    .srNatureBtn{
+        padding:8px 11px;
+        font-size:12px;
+    }
+
+}
+
+@media(max-height:650px){
+
+    .srNatureTitle .icon{
+        display:none;
+    }
+
+    .srNatureTitle h1{
+        margin:3px 0;
+    }
+
+    .srNatureScene{
+        height:40vh;
+        margin:10px auto;
+    }
+
+}
+
+</style>
+
+
+<!-- NATURE PAGE -->
+
+<div id="srNaturePage">
+
+    <div class="srNatureInner">
+
+        <div class="srNatureTop">
+
+            <button
+                class="srNatureBack"
+                onclick="srCloseNature()">
+                ← Back
+            </button>
+
+            <div>🌳 Welcome to Nature</div>
+
+        </div>
+
+
+        <div class="srNatureMain">
+
+            <div class="srNatureTitle">
+
+                <div class="icon">🌳</div>
+
+                <h1>Welcome to Nature</h1>
+
+                <p>
+                    Choose a peaceful place and enjoy the moment.
+                </p>
+
+            </div>
+
+
+            <div
+                class="srNatureScene srForest"
+                id="srNatureScene">
+
+                <div
+                    class="srNatureLabel"
+                    id="srNatureLabel">
+                    🌲 Peaceful Forest
+                </div>
+
+            </div>
+
+
+            <div class="srNatureControls">
+
+                <button
+                    class="srNatureBtn active"
+                    data-scene="forest"
+                    onclick="srNatureChange('forest',this)">
+                    🌲 Forest
+                </button>
+
+                <button
+                    class="srNatureBtn"
+                    data-scene="mountain"
+                    onclick="srNatureChange('mountain',this)">
+                    🏔️ Mountain
+                </button>
+
+                <button
+                    class="srNatureBtn"
+                    data-scene="river"
+                    onclick="srNatureChange('river',this)">
+                    💧 River
+                </button>
+
+                <button
+                    class="srNatureBtn"
+                    data-scene="garden"
+                    onclick="srNatureChange('garden',this)">
+                    🌸 Garden
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="srNatureHint">
+            🌿 Take a breath • Look around • Enjoy nature
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+(function(){
+
+    const page =
+        document.getElementById("srNaturePage");
+
+    if(!page) return;
+
+
+    const scene =
+        document.getElementById("srNatureScene");
+
+    const label =
+        document.getElementById("srNatureLabel");
+
+
+    const names={
+
+        forest:"🌲 Peaceful Forest",
+
+        mountain:"🏔️ Silent Mountains",
+
+        river:"💧 Flowing River",
+
+        garden:"🌸 Beautiful Garden"
+
+    };
+
+
+    /* OPEN */
+
+    window.srOpenNature=function(){
+
+        page.style.display="block";
+
+        document.body.style.overflow="hidden";
+
+    };
+
+
+    /* CLOSE */
+
+    window.srCloseNature=function(){
+
+        page.style.display="none";
+
+        document.body.style.overflow="";
+
+    };
+
+
+    /* CHANGE SCENE */
+
+    window.srNatureChange=function(type,button){
+
+        scene.className=
+            "srNatureScene sr"+
+
+            type.charAt(0).toUpperCase()+
+            type.slice(1);
+
+        label.textContent=
+            names[type];
+
+
+        document
+            .querySelectorAll(".srNatureBtn")
+            .forEach(function(btn){
+
+                btn.classList.remove("active");
+
+            });
+
+
+        button.classList.add("active");
+
+    };
+
+
+    /* HOME CARD */
+
+    document.querySelectorAll(".srExtraCard")
+    .forEach(function(card){
+
+        const heading=
+            card.querySelector("h3");
+
+        if(!heading)return;
+
+
+        if(
+            heading.textContent
+            .toLowerCase()
+            .includes("welcome to nature")
+        ){
+
+            card.onclick=function(){
+
+                srOpenNature();
+
+            };
+
+        }
+
+    });
+
+
+    /* ALSO SUPPORT DIRECT HOME CARD */
+
+    document.querySelectorAll(".card")
+    .forEach(function(card){
+
+        const heading=
+            card.querySelector("h3");
+
+        if(!heading)return;
+
+
+        const text=
+            heading.textContent
+            .trim()
+            .toLowerCase();
+
+
+        if(
+            text.includes("nature") ||
+            text.includes("प्रकृति")
+        ){
+
+            card.style.cursor="pointer";
+
+            card.onclick=function(){
+
+                srOpenNature();
+
+            };
+
+        }
+
+    });
+
+})();
+
+</script>
+
+<!-- ================= END WELCOME TO NATURE ================= -->
+ <!-- =========================================================
+     SERENITY — WELCOME TO NATURE
+     PREMIUM ACTIVE VERSION
+========================================================= -->
+
+<style>
+
+#srNaturePage{
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100dvh;
+    z-index:999999;
+    display:none;
+    overflow:hidden;
+
+    font-family:Arial,sans-serif;
+    color:white;
+
+    background:
+        linear-gradient(
+            rgba(5,22,20,.20),
+            rgba(5,22,20,.55)
+        ),
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2200&q=90")
+        center/cover no-repeat;
+
+    transition:background-image .8s ease;
+}
+
+#srNaturePage.srForestMode{
+    background:
+        linear-gradient(
+            rgba(4,25,20,.18),
+            rgba(3,20,17,.58)
+        ),
+        url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2200&q=90")
+        center/cover no-repeat;
+}
+
+#srNaturePage.srMountainMode{
+    background:
+        linear-gradient(
+            rgba(12,35,45,.12),
+            rgba(5,25,30,.58)
+        ),
+        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=90")
+        center/cover no-repeat;
+}
+
+#srNaturePage.srRiverMode{
+    background:
+        linear-gradient(
+            rgba(5,35,42,.10),
+            rgba(3,25,30,.58)
+        ),
+        url("https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=2200&q=90")
+        center/cover no-repeat;
+}
+
+#srNaturePage.srGardenMode{
+    background:
+        linear-gradient(
+            rgba(18,45,25,.10),
+            rgba(10,30,20,.55)
+        ),
+        url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=2200&q=90")
+        center/cover no-repeat;
+}
+
+
+.srNaturePremium{
+    width:100%;
+    height:100%;
+
+    padding:
+        max(20px,env(safe-area-inset-top))
+        max(20px,env(safe-area-inset-right))
+        max(20px,env(safe-area-inset-bottom))
+        max(20px,env(safe-area-inset-left));
+
+    display:flex;
+    flex-direction:column;
+
+    overflow:auto;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.18),
+            transparent 35%,
+            rgba(0,0,0,.38)
+        );
+}
+
+
+/* TOP */
+
+.srNatureHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    width:100%;
+    max-width:1250px;
+
+    margin:auto;
+}
+
+.srNatureBack{
+    border:1px solid rgba(255,255,255,.35);
+
+    background:rgba(0,0,0,.18);
+
+    color:white;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    backdrop-filter:blur(14px);
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    transition:.25s;
+}
+
+.srNatureBack:hover{
+    background:rgba(255,255,255,.16);
+    transform:translateX(-3px);
+}
+
+.srNatureBrand{
+    padding:9px 17px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.10);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    backdrop-filter:blur(15px);
+
+    font-size:13px;
+
+    letter-spacing:.4px;
+}
+
+
+/* HERO */
+
+.srNatureHero{
+    text-align:center;
+
+    max-width:800px;
+
+    margin:
+        clamp(30px,7vh,75px)
+        auto
+        28px;
+}
+
+.srNatureMiniLeaf{
+    font-size:30px;
+
+    opacity:.9;
+
+    margin-bottom:10px;
+}
+
+.srNatureHero h1{
+    font-size:
+        clamp(38px,6vw,68px);
+
+    font-weight:500;
+
+    letter-spacing:-1px;
+
+    margin:0 0 10px;
+
+    text-shadow:
+        0 5px 25px rgba(0,0,0,.35);
+}
+
+.srNatureHero p{
+    margin:0;
+
+    font-size:
+        clamp(14px,2vw,18px);
+
+    opacity:.88;
+
+    letter-spacing:.3px;
+}
+
+.srNatureSub{
+    margin-top:9px;
+
+    font-style:italic;
+
+    opacity:.72;
+}
+
+
+/* EXPERIENCE CARDS */
+
+.srNatureChoices{
+    width:min(1150px,100%);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:18px;
+}
+
+
+.srNatureChoice{
+
+    position:relative;
+
+    min-height:210px;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    border:
+        1px solid rgba(255,255,255,.25);
+
+    background:
+        rgba(0,0,0,.22);
+
+    backdrop-filter:blur(7px);
+
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.25);
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+.srNatureChoice:hover{
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(255,255,255,.65);
+
+    box-shadow:
+        0 28px 65px rgba(0,0,0,.4);
+}
+
+
+.srNatureChoice.active{
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(220,255,205,.9);
+
+    box-shadow:
+        0 0 0 1px rgba(220,255,205,.25),
+        0 28px 70px rgba(0,0,0,.42);
+}
+
+
+/* CARD IMAGE */
+
+.srNatureChoiceImage{
+
+    position:absolute;
+
+    inset:0;
+
+    background-size:cover;
+
+    background-position:center;
+
+    transition:
+        transform .8s ease;
+}
+
+
+.srNatureChoice:hover
+.srNatureChoiceImage{
+
+    transform:scale(1.06);
+
+}
+
+
+/* CARD OVERLAY */
+
+.srNatureChoiceOverlay{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-end;
+
+    padding:22px;
+
+    background:
+        linear-gradient(
+            transparent 25%,
+            rgba(0,0,0,.78) 100%
+        );
+}
+
+
+/* CARD TEXT */
+
+.srNatureChoiceTitle{
+
+    font-size:22px;
+
+    font-weight:500;
+
+    margin-bottom:5px;
+}
+
+.srNatureChoiceText{
+
+    font-size:12px;
+
+    opacity:.75;
+
+    margin-bottom:15px;
+}
+
+
+/* OPEN BUTTON */
+
+.srNatureOpen{
+
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        rgba(255,255,255,.16);
+
+    border:
+        1px solid rgba(255,255,255,.3);
+
+    font-size:19px;
+
+    transition:.3s;
+}
+
+.srNatureChoice:hover
+.srNatureOpen{
+
+    background:white;
+
+    color:#21483c;
+
+    transform:
+        translateX(5px);
+}
+
+
+/* ACTIVE STATUS */
+
+.srNatureStatus{
+
+    text-align:center;
+
+    margin:25px auto 10px;
+
+    padding:9px 18px;
+
+    width:max-content;
+
+    max-width:90%;
+
+    border-radius:25px;
+
+    background:
+        rgba(255,255,255,.10);
+
+    border:
+        1px solid rgba(255,255,255,.18);
+
+    backdrop-filter:blur(12px);
+
+    font-size:12px;
+
+    opacity:.82;
+}
+
+
+/* FOOTER */
+
+.srNatureFooter{
+
+    text-align:center;
+
+    margin:15px auto 5px;
+
+    font-size:11px;
+
+    opacity:.55;
+}
+
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .srNatureChoices{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:12px;
+    }
+
+    .srNatureChoice{
+
+        min-height:175px;
+    }
+
+}
+
+
+@media(max-width:520px){
+
+    .srNaturePremium{
+
+        padding-left:14px;
+        padding-right:14px;
+    }
+
+    .srNatureBrand{
+
+        font-size:11px;
+    }
+
+    .srNatureHero{
+
+        margin-top:30px;
+
+        margin-bottom:20px;
+    }
+
+    .srNatureHero h1{
+
+        font-size:35px;
+
+    }
+
+    .srNatureChoices{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:10px;
+    }
+
+    .srNatureChoice{
+
+        min-height:165px;
+
+        border-radius:19px;
+    }
+
+    .srNatureChoiceOverlay{
+
+        padding:15px;
+    }
+
+    .srNatureChoiceTitle{
+
+        font-size:17px;
+    }
+
+    .srNatureChoiceText{
+
+        font-size:10px;
+
+        margin-bottom:9px;
+    }
+
+    .srNatureOpen{
+
+        width:32px;
+        height:32px;
+
+        font-size:15px;
+    }
+
+}
+
+
+@media(max-height:680px){
+
+    .srNatureHero{
+
+        margin-top:18px;
+
+        margin-bottom:14px;
+    }
+
+    .srNatureHero h1{
+
+        font-size:32px;
+    }
+
+    .srNatureHero p{
+
+        font-size:12px;
+    }
+
+    .srNatureChoice{
+
+        min-height:145px;
+    }
+
+}
+
+</style>
+
+
+<!-- ================= ACTIVE NATURE PAGE ================= -->
+
+<div id="srNaturePage">
+
+    <div class="srNaturePremium">
+
+
+        <!-- HEADER -->
+
+        <div class="srNatureHeader">
+
+            <button
+                class="srNatureBack"
+                onclick="srCloseNature()">
+
+                ← Back
+
+            </button>
+
+
+            <div class="srNatureBrand">
+
+                ◇ Welcome to Nature
+
+            </div>
+
+        </div>
+
+
+        <!-- HERO -->
+
+        <div class="srNatureHero">
+
+            <div class="srNatureMiniLeaf">
+                ◇
+            </div>
+
+            <h1>
+                Welcome to Nature
+            </h1>
+
+            <p>
+                Nature heals. Nature calms.
+                Nature brings you back to yourself.
+            </p>
+
+            <div class="srNatureSub">
+                Choose a place and let the peace begin.
+            </div>
+
+        </div>
+
+
+        <!-- EXPERIENCE OPTIONS -->
+
+        <div class="srNatureChoices">
+
+
+            <!-- FOREST -->
+
+            <div
+                class="srNatureChoice active"
+                data-nature="forest"
+                onclick="srNatureSelect('forest',this)">
+
+                <div
+                    class="srNatureChoiceImage"
+                    style="
+                    background-image:
+                    url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1000&q=90');
+                    ">
+                </div>
+
+                <div class="srNatureChoiceOverlay">
+
+                    <div class="srNatureChoiceTitle">
+                        Forest
+                    </div>
+
+                    <div class="srNatureChoiceText">
+                        Feel the fresh air
+                    </div>
+
+                    <div class="srNatureOpen">
+                        →
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MOUNTAIN -->
+
+            <div
+                class="srNatureChoice"
+                data-nature="mountain"
+                onclick="srNatureSelect('mountain',this)">
+
+                <div
+                    class="srNatureChoiceImage"
+                    style="
+                    background-image:
+                    url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=90');
+                    ">
+                </div>
+
+                <div class="srNatureChoiceOverlay">
+
+                    <div class="srNatureChoiceTitle">
+                        Mountains
+                    </div>
+
+                    <div class="srNatureChoiceText">
+                        Find your inner strength
+                    </div>
+
+                    <div class="srNatureOpen">
+                        →
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIVER -->
+
+            <div
+                class="srNatureChoice"
+                data-nature="river"
+                onclick="srNatureSelect('river',this)">
+
+                <div
+                    class="srNatureChoiceImage"
+                    style="
+                    background-image:
+                    url('https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=1000&q=90');
+                    ">
+                </div>
+
+                <div class="srNatureChoiceOverlay">
+
+                    <div class="srNatureChoiceTitle">
+                        River
+                    </div>
+
+                    <div class="srNatureChoiceText">
+                        Let everything flow
+                    </div>
+
+                    <div class="srNatureOpen">
+                        →
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- GARDEN -->
+
+            <div
+                class="srNatureChoice"
+                data-nature="garden"
+                onclick="srNatureSelect('garden',this)">
+
+                <div
+                    class="srNatureChoiceImage"
+                    style="
+                    background-image:
+                    url('https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1000&q=90');
+                    ">
+                </div>
+
+                <div class="srNatureChoiceOverlay">
+
+                    <div class="srNatureChoiceTitle">
+                        Garden
+                    </div>
+
+                    <div class="srNatureChoiceText">
+                        Slow down and bloom
+                    </div>
+
+                    <div class="srNatureOpen">
+                        →
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIVE STATUS -->
+
+        <div
+            class="srNatureStatus"
+            id="srNatureStatus">
+
+            Forest selected • Take a slow breath
+
+        </div>
+
+
+        <div class="srNatureFooter">
+
+            Small moments • Big peace
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+(function(){
+
+    const page =
+        document.getElementById(
+            "srNaturePage"
+        );
+
+    if(!page) return;
+
+
+    const status =
+        document.getElementById(
+            "srNatureStatus"
+        );
+
+
+    const data={
+
+        forest:
+        "Forest selected • Feel the fresh air",
+
+        mountain:
+        "Mountains selected • Find your strength",
+
+        river:
+        "River selected • Let everything flow",
+
+        garden:
+        "Garden selected • Slow down and bloom"
+
+    };
+
+
+    /* OPEN */
+
+    window.srOpenNature=function(){
+
+        page.style.display="block";
+
+        document.body.style.overflow="hidden";
+
+    };
+
+
+    /* CLOSE */
+
+    window.srCloseNature=function(){
+
+        page.style.display="none";
+
+        document.body.style.overflow="";
+
+    };
+
+
+    /* SELECT NATURE EXPERIENCE */
+
+    window.srNatureSelect=function(
+        type,
+        card
+    ){
+
+        /* CHANGE BACKGROUND */
+
+        page.classList.remove(
+            "srForestMode",
+            "srMountainMode",
+            "srRiverMode",
+            "srGardenMode"
+        );
+
+
+        page.classList.add(
+            "sr"+
+            type.charAt(0).toUpperCase()+
+            type.slice(1)+
+            "Mode"
+        );
+
+
+        /* ACTIVE CARD */
+
+        document
+            .querySelectorAll(
+                ".srNatureChoice"
+            )
+            .forEach(function(item){
+
+                item.classList.remove(
+                    "active"
+                );
+
+            });
+
+
+        card.classList.add(
+            "active"
+        );
+
+
+        /* STATUS */
+
+        status.textContent=
+            data[type];
+
+
+    };
+
+
+    /* HOME CARD */
+
+    document
+        .querySelectorAll(
+            ".srExtraCard"
+        )
+        .forEach(function(card){
+
+            const heading=
+                card.querySelector("h3");
+
+            if(!heading)return;
+
+
+            if(
+                heading.textContent
+                .toLowerCase()
+                .includes(
+                    "welcome to nature"
+                )
+            ){
+
+                card.onclick=function(){
+
+                    srOpenNature();
+
+                };
+
+            }
+
+        });
+
+
+})();
+
+</script>
+
+<!-- ================= END PREMIUM NATURE ================= -->
+ <!-- =========================================================
+     SERENITY — WELCOME TO NATURE
+     REAL PHOTO • PREMIUM • CINEMATIC
+========================================================= -->
+
+<style>
+
+#srRealNature{
+    position:fixed;
+    inset:0;
+    z-index:9999999;
+    display:none;
+    overflow:hidden;
+    background:#071411;
+    color:#fff;
+    font-family:Arial,sans-serif;
+}
+
+/* REAL BACKGROUND */
+
+.srRealNatureBg{
+    position:absolute;
+    inset:-4%;
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+
+    transition:
+        background-image .8s ease,
+        transform 12s ease;
+}
+
+.srRealNatureBg.zoom{
+    transform:scale(1.07);
+}
+
+
+/* DARK CINEMATIC OVERLAY */
+
+.srRealNatureShade{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.42) 0%,
+            rgba(0,0,0,.08) 35%,
+            rgba(0,0,0,.20) 58%,
+            rgba(0,0,0,.72) 100%
+        );
+
+    pointer-events:none;
+}
+
+
+/* CONTENT */
+
+.srRealNatureContent{
+    position:relative;
+    z-index:5;
+
+    width:100%;
+    height:100%;
+
+    padding:
+        max(20px,env(safe-area-inset-top))
+        max(20px,env(safe-area-inset-right))
+        max(20px,env(safe-area-inset-bottom))
+        max(20px,env(safe-area-inset-left));
+
+    display:flex;
+    flex-direction:column;
+
+    overflow:auto;
+}
+
+
+/* TOP */
+
+.srRealNatureTop{
+    width:100%;
+    max-width:1200px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.srRealNatureBack,
+.srRealNatureBadge{
+
+    border:1px solid rgba(255,255,255,.28);
+
+    background:rgba(0,0,0,.22);
+
+    color:#fff;
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    border-radius:30px;
+
+    padding:10px 17px;
+
+    font-size:13px;
+}
+
+.srRealNatureBack{
+    cursor:pointer;
+    transition:.25s;
+}
+
+.srRealNatureBack:hover{
+    background:rgba(255,255,255,.16);
+    transform:translateX(-3px);
+}
+
+
+/* HERO */
+
+.srRealNatureHero{
+    text-align:center;
+
+    margin:
+        clamp(35px,8vh,85px)
+        auto
+        30px;
+
+    max-width:850px;
+}
+
+.srRealNatureHero h1{
+
+    margin:0 0 12px;
+
+    font-size:
+        clamp(40px,7vw,72px);
+
+    font-weight:500;
+
+    letter-spacing:-1.5px;
+
+    text-shadow:
+        0 5px 30px rgba(0,0,0,.55);
+}
+
+.srRealNatureHero p{
+
+    margin:0;
+
+    font-size:
+        clamp(14px,2vw,18px);
+
+    opacity:.9;
+
+    text-shadow:
+        0 2px 15px rgba(0,0,0,.5);
+}
+
+
+/* REAL NATURE OPTIONS */
+
+.srRealNatureOptions{
+
+    width:min(1100px,100%);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+}
+
+
+/* PHOTO CARD */
+
+.srRealNatureCard{
+
+    position:relative;
+
+    height:210px;
+
+    overflow:hidden;
+
+    border-radius:24px;
+
+    border:
+        1px solid rgba(255,255,255,.28);
+
+    background:rgba(0,0,0,.25);
+
+    cursor:pointer;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.30);
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+.srRealNatureCard:hover{
+
+    transform:translateY(-7px);
+
+    border-color:
+        rgba(255,255,255,.7);
+
+    box-shadow:
+        0 30px 75px rgba(0,0,0,.45);
+}
+
+
+/* PHOTO */
+
+.srRealNaturePhoto{
+
+    position:absolute;
+    inset:0;
+
+    background-position:center;
+    background-size:cover;
+
+    transition:
+        transform 1.2s ease;
+}
+
+.srRealNatureCard:hover
+.srRealNaturePhoto{
+
+    transform:scale(1.09);
+
+}
+
+
+/* PHOTO DARKNESS */
+
+.srRealNaturePhoto:after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            transparent 20%,
+            rgba(0,0,0,.82) 100%
+        );
+}
+
+
+/* CARD TEXT */
+
+.srRealNatureText{
+
+    position:absolute;
+
+    left:20px;
+    right:20px;
+    bottom:18px;
+
+    z-index:3;
+}
+
+.srRealNatureText h3{
+
+    margin:0 0 5px;
+
+    font-size:21px;
+
+    font-weight:500;
+
+    letter-spacing:.2px;
+}
+
+.srRealNatureText p{
+
+    margin:0;
+
+    font-size:12px;
+
+    opacity:.72;
+}
+
+
+/* ACTIVE */
+
+.srRealNatureCard.active{
+
+    border-color:
+        rgba(255,255,255,.9);
+
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.25),
+        0 30px 80px rgba(0,0,0,.5);
+
+    transform:translateY(-6px);
+}
+
+.srRealNatureCard.active
+.srRealNatureText h3{
+
+    letter-spacing:.4px;
+}
+
+
+/* STATUS */
+
+.srRealNatureStatus{
+
+    margin:24px auto 8px;
+
+    padding:10px 20px;
+
+    border-radius:30px;
+
+    background:
+        rgba(0,0,0,.24);
+
+    border:
+        1px solid rgba(255,255,255,.2);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    font-size:12px;
+
+    opacity:.9;
+}
+
+
+/* FOOTER */
+
+.srRealNatureFooter{
+
+    text-align:center;
+
+    font-size:11px;
+
+    opacity:.5;
+
+    margin:12px auto 3px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .srRealNatureOptions{
+        grid-template-columns:repeat(2,1fr);
+        gap:11px;
+    }
+
+    .srRealNatureCard{
+        height:175px;
+        border-radius:20px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .srRealNatureContent{
+        padding-left:13px;
+        padding-right:13px;
+    }
+
+    .srRealNatureHero{
+        margin-top:35px;
+        margin-bottom:22px;
+    }
+
+    .srRealNatureHero h1{
+        font-size:36px;
+    }
+
+    .srRealNatureHero p{
+        font-size:13px;
+    }
+
+    .srRealNatureCard{
+        height:165px;
+    }
+
+    .srRealNatureText{
+        left:15px;
+        right:15px;
+        bottom:15px;
+    }
+
+    .srRealNatureText h3{
+        font-size:17px;
+    }
+
+    .srRealNatureText p{
+        font-size:10px;
+    }
+
+}
+
+@media(max-height:680px){
+
+    .srRealNatureHero{
+        margin-top:18px;
+        margin-bottom:15px;
+    }
+
+    .srRealNatureHero h1{
+        font-size:32px;
+    }
+
+    .srRealNatureCard{
+        height:145px;
+    }
+
+}
+
+</style>
+
+
+<!-- ================= REAL NATURE PAGE ================= -->
+
+<div id="srRealNature">
+
+    <div
+        class="srRealNatureBg"
+        id="srRealNatureBg">
+    </div>
+
+    <div class="srRealNatureShade"></div>
+
+
+    <div class="srRealNatureContent">
+
+
+        <!-- TOP -->
+
+        <div class="srRealNatureTop">
+
+            <button
+                class="srRealNatureBack"
+                onclick="srCloseRealNature()">
+
+                ← Back
+
+            </button>
+
+            <div class="srRealNatureBadge">
+                SERENITY • NATURE
+            </div>
+
+        </div>
+
+
+        <!-- HERO -->
+
+        <div class="srRealNatureHero">
+
+            <h1>
+                Welcome to Nature
+            </h1>
+
+            <p>
+                Leave the noise behind. Let nature slow everything down.
+            </p>
+
+        </div>
+
+
+        <!-- REAL PHOTO CARDS -->
+
+        <div class="srRealNatureOptions">
+
+
+            <!-- FOREST -->
+
+            <div
+                class="srRealNatureCard active"
+                onclick="srRealNatureSelect('forest',this)">
+
+                <div
+                    class="srRealNaturePhoto"
+                    style="
+                    background-image:url(
+                    'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=90'
+                    );
+                    ">
+                </div>
+
+                <div class="srRealNatureText">
+
+                    <h3>Forest</h3>
+
+                    <p>
+                        Breathe with the trees
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- MOUNTAIN -->
+
+            <div
+                class="srRealNatureCard"
+                onclick="srRealNatureSelect('mountain',this)">
+
+                <div
+                    class="srRealNaturePhoto"
+                    style="
+                    background-image:url(
+                    'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=90'
+                    );
+                    ">
+                </div>
+
+                <div class="srRealNatureText">
+
+                    <h3>Mountain</h3>
+
+                    <p>
+                        Feel the silence
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIVER -->
+
+            <div
+                class="srRealNatureCard"
+                onclick="srRealNatureSelect('river',this)">
+
+                <div
+                    class="srRealNaturePhoto"
+                    style="
+                    background-image:url(
+                    'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=1200&q=90'
+                    );
+                    ">
+                </div>
+
+                <div class="srRealNatureText">
+
+                    <h3>River</h3>
+
+                    <p>
+                        Let everything flow
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- GARDEN -->
+
+            <div
+                class="srRealNatureCard"
+                onclick="srRealNatureSelect('garden',this)">
+
+                <div
+                    class="srRealNaturePhoto"
+                    style="
+                    background-image:url(
+                    'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1200&q=90'
+                    );
+                    ">
+                </div>
+
+                <div class="srRealNatureText">
+
+                    <h3>Garden</h3>
+
+                    <p>
+                        Slow down and breathe
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="srRealNatureStatus"
+            id="srRealNatureStatus">
+
+            Forest selected • Breathe slowly
+
+        </div>
+
+
+        <div class="srRealNatureFooter">
+
+            A quiet moment with nature
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+(function(){
+
+    const page =
+        document.getElementById(
+            "srRealNature"
+        );
+
+    const bg =
+        document.getElementById(
+            "srRealNatureBg"
+        );
+
+    const status =
+        document.getElementById(
+            "srRealNatureStatus"
+        );
+
+
+    if(!page)return;
+
+
+    const scenes={
+
+        forest:{
+            image:
+            "url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2200&q=90')",
+
+            text:
+            "Forest selected • Breathe slowly"
+        },
+
+        mountain:{
+            image:
+            "url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=90')",
+
+            text:
+            "Mountain selected • Feel the silence"
+        },
+
+        river:{
+            image:
+            "url('https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=2200&q=90')",
+
+            text:
+            "River selected • Let everything flow"
+        },
+
+        garden:{
+            image:
+            "url('https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=2200&q=90')",
+
+            text:
+            "Garden selected • Slow down and breathe"
+        }
+
+    };
+
+
+    /* OPEN */
+
+    window.srOpenNature=function(){
+
+        /* REMOVE OLD NATURE SCREENS */
+
+        const old1 =
+            document.getElementById(
+                "srNaturePage"
+            );
+
+        if(old1)old1.style.display="none";
+
+
+        const old2 =
+            document.getElementById(
+                "srRealNature"
+            );
+
+        old2.style.display="block";
+
+        document.body.style.overflow="hidden";
+
+
+        /* DEFAULT */
+
+        srRealNatureSelect(
+            "forest",
+            document.querySelector(
+                ".srRealNatureCard"
+            )
+        );
+
+    };
+
+
+    /* CLOSE */
+
+    window.srCloseRealNature=function(){
+
+        page.style.display="none";
+
+        document.body.style.overflow="";
+
+    };
+
+
+    /* SELECT */
+
+    window.srRealNatureSelect=function(
+        type,
+        card
+    ){
+
+        const scene =
+            scenes[type];
+
+        if(!scene)return;
+
+
+        /* PHOTO */
+
+        bg.classList.remove("zoom");
+
+        bg.style.backgroundImage =
+            scene.image;
+
+
+        void bg.offsetWidth;
+
+        bg.classList.add("zoom");
+
+
+        /* ACTIVE CARD */
+
+        document
+            .querySelectorAll(
+                ".srRealNatureCard"
+            )
+            .forEach(function(item){
+
+                item.classList.remove(
+                    "active"
+                );
+
+            });
+
+
+        if(card){
+
+            card.classList.add(
+                "active"
+            );
+
+        }
+
+
+        /* STATUS */
+
+        status.textContent =
+            scene.text;
+
+    };
+
+
+    /* OLD NATURE CARD */
+
+    document
+        .querySelectorAll(
+            ".srExtraCard"
+        )
+        .forEach(function(card){
+
+            const h =
+                card.querySelector("h3");
+
+            if(!h)return;
+
+
+            if(
+                h.textContent
+                .toLowerCase()
+                .includes(
+                    "welcome to nature"
+                )
+            ){
+
+                card.onclick=function(){
+
+                    srOpenNature();
+
+                };
+
+            }
+
+        });
+
+
+})();
+
+</script>
+
+<!-- ================= END REAL NATURE ================= -->
+ <!-- ================= SERENITY OWNER ================= -->
+
+<style>
+
+.srOwnerSection{
+    max-width:1050px;
+    margin:45px auto 25px;
+    padding:28px 22px;
+
+    text-align:center;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.16);
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.18);
+}
+
+.srOwnerSmall{
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    opacity:.55;
+    margin-bottom:8px;
+}
+
+.srOwnerName{
+    font-size:28px;
+    font-weight:500;
+    letter-spacing:1px;
+    margin-bottom:7px;
+}
+
+.srOwnerRole{
+    font-size:13px;
+    opacity:.65;
+}
+
+.srOwnerLine{
+    width:45px;
+    height:1px;
+    margin:16px auto 0;
+    background:rgba(255,255,255,.45);
+}
+
+</style>
+
+
+<div class="srOwnerSection">
+
+    <div class="srOwnerSmall">
+        Serenity
+    </div>
+
+    <div class="srOwnerName">
+        Komal
+    </div>
+
+    <div class="srOwnerRole">
+        Owner
+    </div>
+
+    <div class="srOwnerLine"></div>
+
+</div>
+
+
+<!-- ================= END OWNER ================= -->
+ <!-- ================= PREMIUM OWNER — SERENITY ================= -->
+
+<style>
+
+.srPremiumOwner{
+    max-width:1050px;
+    margin:60px auto 30px;
+    padding:38px 25px;
+
+    position:relative;
+    overflow:hidden;
+
+    text-align:center;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.13),
+            rgba(255,255,255,.045)
+        );
+
+    border:1px solid rgba(255,255,255,.20);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.25),
+        inset 0 1px 0 rgba(255,255,255,.16);
+}
+
+
+/* soft premium glow */
+
+.srPremiumOwner:before{
+    content:"";
+
+    position:absolute;
+
+    width:230px;
+    height:230px;
+
+    left:50%;
+    top:-150px;
+
+    transform:translateX(-50%);
+
+    border-radius:50%;
+
+    background:rgba(220,190,120,.10);
+
+    filter:blur(35px);
+
+    pointer-events:none;
+}
+
+
+/* top line */
+
+.srOwnerLabel{
+    position:relative;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    opacity:.52;
+
+    margin-bottom:17px;
+}
+
+
+/* elegant K */
+
+.srOwnerMonogram{
+
+    position:relative;
+
+    width:62px;
+    height:62px;
+
+    margin:0 auto 17px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    border:1px solid rgba(235,210,155,.55);
+
+    background:
+        rgba(255,255,255,.055);
+
+    box-shadow:
+        0 0 0 7px rgba(235,210,155,.035),
+        0 12px 35px rgba(0,0,0,.18);
+
+    color:#eee0b7;
+
+    font-family:Georgia,serif;
+
+    font-size:25px;
+
+    font-style:italic;
+}
+
+
+/* owner name */
+
+.srOwnerPremiumName{
+
+    position:relative;
+
+    font-family:Georgia,"Times New Roman",serif;
+
+    font-size:31px;
+
+    font-weight:400;
+
+    letter-spacing:1px;
+
+    margin-bottom:7px;
+
+    text-shadow:
+        0 4px 20px rgba(0,0,0,.22);
+}
+
+
+/* role */
+
+.srOwnerPremiumRole{
+
+    position:relative;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    opacity:.55;
+}
+
+
+/* divider */
+
+.srOwnerDivider{
+
+    width:55px;
+    height:1px;
+
+    margin:20px auto 15px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(235,210,155,.7),
+            transparent
+        );
+}
+
+
+/* signature text */
+
+.srOwnerQuote{
+
+    position:relative;
+
+    font-family:Georgia,serif;
+
+    font-size:13px;
+
+    font-style:italic;
+
+    opacity:.58;
+
+    letter-spacing:.2px;
+}
+
+
+/* mobile */
+
+@media(max-width:500px){
+
+    .srPremiumOwner{
+
+        margin:45px 12px 25px;
+
+        padding:32px 18px;
+
+        border-radius:25px;
+
+    }
+
+    .srOwnerMonogram{
+
+        width:55px;
+        height:55px;
+
+        font-size:22px;
+
+    }
+
+    .srOwnerPremiumName{
+
+        font-size:27px;
+
+    }
+
+    .srOwnerQuote{
+
+        font-size:12px;
+
+    }
+
+}
+
+</style>
+
+
+<script>
+
+(function(){
+
+    /* Remove old owner section */
+
+    document
+        .querySelectorAll(".srOwnerSection")
+        .forEach(function(old){
+
+            old.remove();
+
+        });
+
+
+    /* Avoid duplicate premium owner */
+
+    if(
+        document.querySelector(
+            ".srPremiumOwner"
+        )
+    ){
+        return;
+    }
+
+
+    /* Create premium owner */
+
+    const owner =
+        document.createElement("section");
+
+    owner.className=
+        "srPremiumOwner";
+
+
+    owner.innerHTML=`
+
+        <div class="srOwnerLabel">
+            Serenity
+        </div>
+
+
+        <div class="srOwnerMonogram">
+            K
+        </div>
+
+
+        <div class="srOwnerPremiumName">
+            Komal
+        </div>
+
+
+        <div class="srOwnerPremiumRole">
+            Owner
+        </div>
+
+
+        <div class="srOwnerDivider"></div>
+
+
+        <div class="srOwnerQuote">
+            A space created for peace, calm & better moments.
+        </div>
+
+    `;
+
+
+    /* Put at bottom of main page */
+
+    const footer =
+        document.querySelector(".footer");
+
+
+    if(footer){
+
+        footer.parentNode.insertBefore(
+            owner,
+            footer
+        );
+
+    }else{
+
+        document.body.appendChild(owner);
+
+    }
+
+})();
+
+</script>
+
+<!-- ================= END PREMIUM OWNER ================= -->
+ <!-- SERENITY PREMIUM RANDOM BACKGROUND FIX -->
+<style>
+#srBgLayer{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    transition:opacity 1.8s ease;
+}
+
+#srBgOverlay{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(3,28,25,.72),
+            rgba(8,45,40,.48)
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.10),
+            rgba(0,0,0,.48)
+        );
+    pointer-events:none;
+}
+
+/* Screenshot mein galti se visible hua "html" hatao */
+body{
+    position:relative;
+    overflow-x:hidden;
+}
+
+.sr-hide-html-text{
+    display:none !important;
+}
+</style>
+
+<script>
+(function(){
+
+    /* --------------------------------
+       1. GALAT "html" TEXT REMOVE
+    -------------------------------- */
+
+    function removeWrongHTMLText(){
+
+        const walker = document.createTreeWalker(
+            document.body,
+            NodeFilter.SHOW_TEXT
+        );
+
+        const nodes = [];
+
+        while(walker.nextNode()){
+            nodes.push(walker.currentNode);
+        }
+
+        nodes.forEach(node => {
+
+            const value = node.nodeValue.trim().toLowerCase();
+
+            if(value === "html"){
+                node.remove();
+            }
+
+        });
+    }
+
+    removeWrongHTMLText();
+
+
+    /* --------------------------------
+       2. PREMIUM BACKGROUND IMAGES
+    -------------------------------- */
+
+    const serenityBackgrounds = [
+
+        /* 🌲 Nature */
+        "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🏔️ Mountain */
+        "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🌊 Lake / Water */
+        "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🌳 Forest */
+        "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🌅 Sunset */
+        "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🌿 Green Nature */
+        "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🌄 Peaceful Landscape */
+        "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🌲 Deep Forest */
+        "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🌅 Golden Nature */
+        "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🌊 River / Water */
+        "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🌿 Green Garden */
+        "https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🌄 Calm Hills */
+        "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=90"
+
+    ];
+
+
+    /* --------------------------------
+       3. BACKGROUND LAYERS
+    -------------------------------- */
+
+    let oldLayer = document.getElementById("srBgLayer");
+
+    if(oldLayer){
+        oldLayer.remove();
+    }
+
+    let oldOverlay = document.getElementById("srBgOverlay");
+
+    if(oldOverlay){
+        oldOverlay.remove();
+    }
+
+
+    const bg = document.createElement("div");
+    bg.id = "srBgLayer";
+
+    const overlay = document.createElement("div");
+    overlay.id = "srBgOverlay";
+
+    document.body.prepend(bg);
+    document.body.prepend(overlay);
+
+
+    /* --------------------------------
+       4. RANDOM IMAGE
+    -------------------------------- */
+
+    let currentIndex = -1;
+
+    function changeSerenityBackground(){
+
+        let newIndex;
+
+        do{
+            newIndex = Math.floor(
+                Math.random() * serenityBackgrounds.length
+            );
+        }
+        while(
+            newIndex === currentIndex &&
+            serenityBackgrounds.length > 1
+        );
+
+        currentIndex = newIndex;
+
+        bg.style.opacity = "0";
+
+        setTimeout(() => {
+
+            bg.style.backgroundImage =
+                `url("${serenityBackgrounds[newIndex]}")`;
+
+            bg.style.opacity = "1";
+
+        },900);
+    }
+
+
+    /* --------------------------------
+       5. FIRST BACKGROUND
+    -------------------------------- */
+
+    changeSerenityBackground();
+
+
+    /* --------------------------------
+       6. EVERY 50 SECONDS
+    -------------------------------- */
+
+    setInterval(() => {
+
+        changeSerenityBackground();
+
+    },50000);
+
+
+})();
+</script>
+<!-- ================================
+     SERENITY PREMIUM BACKGROUND
+     ================================ -->
+
+<style>
+#srPremiumBG{
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    opacity:1;
+    transform:scale(1.02);
+    transition:
+        opacity 1.8s ease,
+        background-image 0s;
+}
+
+#srPremiumBG::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(3,28,25,.68),
+            rgba(7,48,43,.42)
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.08),
+            rgba(0,0,0,.48)
+        );
+}
+
+/* Purane body background ko transparent rakho */
+body{
+    background:transparent !important;
+}
+</style>
+
+<script>
+(function(){
+
+    /* --------------------------------
+       PREMIUM SERENITY BACKGROUNDS
+    -------------------------------- */
+
+    const serenityPhotos = [
+
+        /* 🌲 Forest */
+        "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🌿 Green Nature */
+        "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🏔️ Mountain */
+        "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🌊 Waterfall */
+        "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🌄 Mountain Lake */
+        "https://images.unsplash.com/photo-1501785888041-af3ef2852c3b?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🌅 Sunset */
+        "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🌳 Trees */
+        "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🌸 Nature / Garden */
+        "https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=2000&q=90",
+
+        /* 🛕 Lord Ram */
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Lord_Ram.jpg",
+
+        /* 🦚 Radha Krishna */
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/PAINTING_OF_RADHA_KRISHNA.jpg",
+
+        /* 🦚 Radha Krishna Vrindavan */
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Radha_Krishna_Vrindavan.jpg",
+
+        /* 🛕 Ram Temple */
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Lord_Ram_Temple.jpg"
+    ];
+
+
+    /* --------------------------------
+       CREATE BACKGROUND
+    -------------------------------- */
+
+    let bg = document.getElementById("srPremiumBG");
+
+    if(!bg){
+
+        bg = document.createElement("div");
+        bg.id = "srPremiumBG";
+
+        document.body.prepend(bg);
+    }
+
+
+    /* --------------------------------
+       RANDOM SYSTEM
+    -------------------------------- */
+
+    let lastIndex = -1;
+
+    function changeBackground(){
+
+        let newIndex;
+
+        do{
+            newIndex =
+                Math.floor(
+                    Math.random() * serenityPhotos.length
+                );
+
+        }while(
+            newIndex === lastIndex &&
+            serenityPhotos.length > 1
+        );
+
+        lastIndex = newIndex;
+
+
+        /* Fade out */
+
+        bg.style.opacity = "0";
+
+
+        setTimeout(function(){
+
+            bg.style.backgroundImage =
+                'url("' + serenityPhotos[newIndex] + '")';
+
+
+            /* Fade in */
+
+            bg.style.opacity = "1";
+
+        },900);
+    }
+
+
+    /* --------------------------------
+       FIRST PHOTO
+    -------------------------------- */
+
+    changeBackground();
+
+
+    /* --------------------------------
+       EVERY 50 SECONDS
+    -------------------------------- */
+
+    setInterval(function(){
+
+        changeBackground();
+
+    },50000);
+
+
+})();
+</script>
+<!-- REMOVE UNWANTED "html" TEXT -->
+<script>
+(function(){
+
+    function removeHTMLText(){
+
+        const walker = document.createTreeWalker(
+            document.body,
+            NodeFilter.SHOW_TEXT
+        );
+
+        const removeList = [];
+
+        while(walker.nextNode()){
+
+            const node = walker.currentNode;
+            const text = node.nodeValue.trim().toLowerCase();
+
+            if(text === "html"){
+                removeList.push(node);
+            }
+        }
+
+        removeList.forEach(node => node.remove());
+    }
+
+    /* Page load par */
+    removeHTMLText();
+
+    /* Agar kisi script ki wajah se dobara aaye */
+    setTimeout(removeHTMLText, 500);
+    setTimeout(removeHTMLText, 1500);
+    setTimeout(removeHTMLText, 3000);
+
+})();
+</script>
+<!-- ===== SERENITY : REMOVE ALL VISIBLE HTML TEXT ===== -->
+
+<style>
+/* Sirf unwanted visible "html" text wale elements hide honge */
+.sr-remove-html-text{
+    display:none !important;
+}
+</style>
+
+<script>
+(function(){
+
+    function removeAllVisibleHTMLText(){
+
+        /* 1. Aise elements dhundo jinka pura visible text sirf "html" hai */
+        document.querySelectorAll("body *").forEach(function(el){
+
+            if(
+                el.children.length === 0 &&
+                el.textContent.trim().toLowerCase() === "html"
+            ){
+                el.classList.add("sr-remove-html-text");
+            }
+
+        });
+
+
+        /* 2. Direct text nodes bhi remove karo */
+        const walker = document.createTreeWalker(
+            document.body,
+            NodeFilter.SHOW_TEXT
+        );
+
+        const nodesToRemove = [];
+
+        while(walker.nextNode()){
+
+            const node = walker.currentNode;
+            const text = node.nodeValue.trim();
+
+            if(text.toLowerCase() === "html"){
+                nodesToRemove.push(node);
+            }
+        }
+
+        nodesToRemove.forEach(function(node){
+            node.remove();
+        });
+    }
+
+
+    /* Page load */
+    removeAllVisibleHTMLText();
+
+
+    /* Agar page ke baad koi html text create ho */
+    setTimeout(removeAllVisibleHTMLText,300);
+    setTimeout(removeAllVisibleHTMLText,1000);
+    setTimeout(removeAllVisibleHTMLText,2000);
+
+
+    /* Future mein dobara aaye to bhi remove */
+    const observer = new MutationObserver(function(){
+        removeAllVisibleHTMLText();
+    });
+
+    observer.observe(document.body,{
+        childList:true,
+        subtree:true
+    });
+
+})();
+</script>
+<!-- SERENITY FINAL CLEANUP -->
+
+<style>
+.sr-code-text-clean{
+    display:none !important;
+}
+</style>
+
+<script>
+(function(){
+
+    function cleanVisibleCodeText(){
+
+        const walker = document.createTreeWalker(
+            document.body,
+            NodeFilter.SHOW_TEXT
+        );
+
+        const removeNodes = [];
+
+        while(walker.nextNode()){
+
+            const node = walker.currentNode;
+            const parent = node.parentElement;
+
+            if(!parent) continue;
+
+            /* Script aur Style ke andar kuch mat chhedna */
+            if(
+                parent.tagName === "SCRIPT" ||
+                parent.tagName === "STYLE"
+            ){
+                continue;
+            }
+
+            const text = node.nodeValue;
+
+            /* Markdown code-fence text */
+            if(
+                text.includes("```html") ||
+                text.includes("```HTML") ||
+                text.trim() === "```"
+            ){
+                removeNodes.push(node);
+            }
+        }
+
+        removeNodes.forEach(function(node){
+            node.remove();
+        });
+
+
+        /* Agar kisi element ke andar pura code-fence text hai */
+        document.querySelectorAll("body *").forEach(function(el){
+
+            if(
+                el.tagName === "SCRIPT" ||
+                el.tagName === "STYLE"
+            ){
+                return;
+            }
+
+            if(el.children.length === 0){
+
+                const text = el.textContent.trim();
+
+                if(
+                    text === "```html" ||
+                    text === "```HTML" ||
+                    text === "```"
+                ){
+                    el.remove();
+                }
+            }
+        });
+    }
+
+
+    /* Abhi clean karo */
+    cleanVisibleCodeText();
+
+    /* Page load ke baad bhi */
+    setTimeout(cleanVisibleCodeText,500);
+    setTimeout(cleanVisibleCodeText,1500);
+    setTimeout(cleanVisibleCodeText,3000);
+
+
+    /* Future mein dobara aaye to remove */
+    const observer = new MutationObserver(function(){
+
+        cleanVisibleCodeText();
+
+    });
+
+    observer.observe(document.body,{
+        childList:true,
+        subtree:true
+    });
+
+})();
+</script>
+<!-- SERENITY BRIGHT BACKGROUND FIX -->
+
+<style>
+#srPremiumBG::after{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(3,28,25,.35),
+            rgba(7,48,43,.20)
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.02),
+            rgba(0,0,0,.18)
+        ) !important;
+}
+
+/* Background ko thoda brighter + clear */
+#srPremiumBG{
+    filter:brightness(1.18) saturate(1.08) !important;
+}
+</style>
+<!-- SERENITY EXTRA BRIGHT BACKGROUND -->
+
+<style>
+#srPremiumBG{
+    filter:
+        brightness(1.38)
+        saturate(1.12)
+        contrast(1.03) !important;
+}
+
+#srPremiumBG::after{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(3,28,25,.16),
+            rgba(7,48,43,.08)
+        ),
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.02),
+            rgba(0,0,0,.08)
+        ) !important;
+}
+</style>
+<!-- ==============================
+     SERENITY PREMIUM LOGO
+     ============================== -->
+
+<style>
+
+.srPremiumLogo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+    user-select:none;
+}
+
+.srLogoMark{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    position:relative;
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #dff7ef 0%,
+            #8fcfc0 48%,
+            #245b54 49%,
+            #123d38 100%
+        );
+
+    border:1px solid rgba(255,255,255,.65);
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.28),
+        inset 0 0 12px rgba(255,255,255,.25);
+}
+
+
+/* Sunrise */
+
+.srLogoSun{
+    position:absolute;
+    width:17px;
+    height:17px;
+    border-radius:50%;
+    background:#f6d98b;
+    top:9px;
+    left:15px;
+
+    box-shadow:
+        0 0 12px rgba(246,217,139,.8);
+}
+
+
+/* Mountains */
+
+.srLogoMountain1{
+    position:absolute;
+    left:-5px;
+    bottom:13px;
+    width:38px;
+    height:28px;
+
+    background:#315d56;
+
+    clip-path:polygon(
+        0 100%,
+        42% 28%,
+        58% 48%,
+        72% 20%,
+        100% 100%
+    );
+}
+
+.srLogoMountain2{
+    position:absolute;
+    right:-7px;
+    bottom:13px;
+    width:35px;
+    height:25px;
+
+    background:#1e4b46;
+
+    clip-path:polygon(
+        0 100%,
+        48% 30%,
+        100% 100%
+    );
+}
+
+
+/* Water */
+
+.srLogoWater{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:15px;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.28) 0px,
+            rgba(255,255,255,.28) 1px,
+            transparent 1px,
+            transparent 5px
+        );
+
+    opacity:.65;
+}
+
+
+/* Leaves */
+
+.srLogoLeaf{
+    position:absolute;
+    width:8px;
+    height:15px;
+    border-radius:100% 0 100% 0;
+    background:#8fcf73;
+}
+
+.srLogoLeaf.l1{
+    left:7px;
+    top:6px;
+    transform:rotate(-30deg);
+}
+
+.srLogoLeaf.l2{
+    right:6px;
+    top:5px;
+    transform:rotate(35deg);
+}
+
+
+/* Brand Name */
+
+.srLogoText{
+    display:flex;
+    flex-direction:column;
+    line-height:1;
+}
+
+.srLogoName{
+    font-family:Georgia,serif;
+    font-size:23px;
+    font-weight:600;
+    letter-spacing:1.5px;
+    color:white;
+    text-shadow:0 2px 10px rgba(0,0,0,.35);
+}
+
+.srLogoTag{
+    margin-top:5px;
+    font-size:8px;
+    letter-spacing:3px;
+    opacity:.65;
+    color:white;
+}
+
+
+/* Mobile */
+
+@media(max-width:430px){
+
+    .srLogoMark{
+        width:42px;
+        height:42px;
+    }
+
+    .srLogoName{
+        font-size:20px;
+    }
+
+    .srLogoTag{
+        font-size:7px;
+    }
+}
+
+</style>
+
+
+<script>
+
+(function(){
+
+    function createSerenityLogo(){
+
+        /* Purana logo hide */
+        document.querySelectorAll(".logo").forEach(function(oldLogo){
+            oldLogo.style.display="none";
+        });
+
+
+        /* Agar pehle se bana hua hai */
+        if(document.getElementById("srPremiumLogo")){
+            return;
+        }
+
+
+        const logo = document.createElement("div");
+
+        logo.id="srPremiumLogo";
+        logo.className="srPremiumLogo";
+
+        logo.innerHTML=`
+
+            <div class="srLogoMark">
+
+                <div class="srLogoSun"></div>
+
+                <div class="srLogoMountain1"></div>
+
+                <div class="srLogoMountain2"></div>
+
+                <div class="srLogoWater"></div>
+
+                <div class="srLogoLeaf l1"></div>
+
+                <div class="srLogoLeaf l2"></div>
+
+            </div>
+
+            <div class="srLogoText">
+
+                <div class="srLogoName">
+                    Serenity
+                </div>
+
+                <div class="srLogoTag">
+                    PEACE • NATURE • CALM
+                </div>
+
+            </div>
+        `;
+
+
+        /* Topbar mein logo ki jagah */
+        const topbar=document.querySelector(".topbar");
+
+        if(topbar){
+
+            topbar.insertBefore(
+                logo,
+                topbar.firstChild
+            );
+
+        }else{
+
+            document.body.prepend(logo);
+
+        }
+
+    }
+
+
+    createSerenityLogo();
+
+})();
+
+</script>
+<!-- =========================================
+     SERENITY PREMIUM NATURE LOGO
+     ========================================= -->
+
+<style>
+
+#srNatureLogo{
+    width:58px;
+    height:58px;
+    flex-shrink:0;
+    display:block;
+    filter:
+        drop-shadow(0 5px 12px rgba(0,0,0,.35));
+}
+
+#srNatureLogo svg{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+
+/* Desktop */
+@media(min-width:700px){
+
+    #srNatureLogo{
+        width:68px;
+        height:68px;
+    }
+}
+
+
+/* Mobile */
+@media(max-width:430px){
+
+    #srNatureLogo{
+        width:54px;
+        height:54px;
+    }
+}
+
+</style>
+
+
+<script>
+
+(function(){
+
+    /* -------------------------------
+       PURANA LOGO HIDE
+    -------------------------------- */
+
+    document.querySelectorAll(".logo").forEach(function(el){
+        el.style.display="none";
+    });
+
+    const oldLogo=document.getElementById("srPremiumLogo");
+
+    if(oldLogo){
+        oldLogo.style.display="none";
+    }
+
+
+    /* -------------------------------
+       DUPLICATE LOGO CHECK
+    -------------------------------- */
+
+    if(document.getElementById("srNatureLogo")){
+        return;
+    }
+
+
+    /* -------------------------------
+       CREATE LOGO
+    -------------------------------- */
+
+    const logo=document.createElement("div");
+
+    logo.id="srNatureLogo";
+
+    logo.innerHTML=`
+
+    <svg
+        viewBox="0 0 500 500"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-label="Serenity"
+    >
+
+        <defs>
+
+            <!-- Sky -->
+            <linearGradient
+                id="srSky"
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+            >
+                <stop offset="0%" stop-color="#4f9fbc"/>
+                <stop offset="55%" stop-color="#a9d7c8"/>
+                <stop offset="100%" stop-color="#e9c57d"/>
+            </linearGradient>
+
+
+            <!-- Water -->
+            <linearGradient
+                id="srWater"
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+            >
+                <stop offset="0%" stop-color="#3e8c91"/>
+                <stop offset="100%" stop-color="#082f35"/>
+            </linearGradient>
+
+
+            <!-- Green -->
+            <linearGradient
+                id="srGreen"
+                x1="0"
+                y1="0"
+                x2="1"
+                y2="1"
+            >
+                <stop offset="0%" stop-color="#a8d85a"/>
+                <stop offset="55%" stop-color="#4d8f32"/>
+                <stop offset="100%" stop-color="#153d25"/>
+            </linearGradient>
+
+
+            <!-- Gold -->
+            <linearGradient
+                id="srGold"
+                x1="0"
+                y1="0"
+                x2="1"
+                y2="1"
+            >
+                <stop offset="0%" stop-color="#fff2a5"/>
+                <stop offset="45%" stop-color="#d9b85b"/>
+                <stop offset="100%" stop-color="#9b762c"/>
+            </linearGradient>
+
+
+            <!-- Border -->
+            <linearGradient
+                id="srBorder"
+                x1="0"
+                y1="0"
+                x2="1"
+                y2="1"
+            >
+                <stop offset="0%" stop-color="#b9e879"/>
+                <stop offset="50%" stop-color="#e8d86d"/>
+                <stop offset="100%" stop-color="#3f792e"/>
+            </linearGradient>
+
+
+            <!-- Circle clip -->
+            <clipPath id="srCircleClip">
+                <circle
+                    cx="250"
+                    cy="250"
+                    r="238"
+                />
+            </clipPath>
+
+
+            <!-- Text shadow -->
+            <filter id="srTextShadow">
+
+                <feDropShadow
+                    dx="0"
+                    dy="5"
+                    stdDeviation="5"
+                    flood-color="#000"
+                    flood-opacity=".65"
+                />
+
+            </filter>
+
+        </defs>
+
+
+        <!-- =================================
+             ROUND BACKGROUND
+             ================================= -->
+
+        <circle
+            cx="250"
+            cy="250"
+            r="240"
+            fill="#08251f"
+        />
+
+
+        <!-- =================================
+             NATURE SCENE
+             ================================= -->
+
+        <g clip-path="url(#srCircleClip)">
+
+            <!-- Sky -->
+
+            <rect
+                x="0"
+                y="0"
+                width="500"
+                height="310"
+                fill="url(#srSky)"
+            />
+
+
+            <!-- Soft clouds -->
+
+            <path
+                d="
+                M0 145
+                C70 115 120 125 170 145
+                C220 105 300 110 350 145
+                C405 115 455 120 500 145
+                L500 205
+                L0 205 Z"
+                fill="#fff"
+                opacity=".13"
+            />
+
+
+            <!-- Sun -->
+
+            <circle
+                cx="310"
+                cy="168"
+                r="42"
+                fill="#fff4c4"
+                opacity=".95"
+            />
+
+            <circle
+                cx="310"
+                cy="168"
+                r="58"
+                fill="#fff4c4"
+                opacity=".12"
+            />
+
+
+            <!-- Far mountains -->
+
+            <path
+                d="
+                M0 250
+                L55 210
+                L105 230
+                L155 170
+                L215 225
+                L275 175
+                L330 220
+                L390 160
+                L500 235
+                L500 330
+                L0 330 Z"
+                fill="#47747a"
+            />
+
+
+            <!-- Main mountains -->
+
+            <path
+                d="
+                M0 285
+                L70 205
+                L120 235
+                L190 145
+                L250 225
+                L315 160
+                L370 235
+                L425 190
+                L500 270
+                L500 340
+                L0 340 Z"
+                fill="#174e4e"
+            />
+
+
+            <!-- Mountain highlights -->
+
+            <path
+                d="
+                M190 145
+                L250 225
+                L220 203
+                L195 215
+                L170 187 Z"
+                fill="#dce7d8"
+                opacity=".5"
+            />
+
+
+            <!-- Forest -->
+
+            <path
+                d="
+                M0 275
+                Q50 245 100 275
+                Q150 235 205 275
+                Q260 240 320 275
+                Q380 235 440 270
+                Q470 250 500 275
+                L500 345
+                L0 345 Z"
+                fill="#143f2d"
+            />
+
+
+            <!-- Water -->
+
+            <path
+                d="
+                M0 310
+                Q120 285 250 315
+                Q380 285 500 310
+                L500 500
+                L0 500 Z"
+                fill="url(#srWater)"
+            />
+
+
+            <!-- Sun reflection -->
+
+            <path
+                d="
+                M288 205
+                Q310 215 332 205
+                L365 330
+                Q310 350 255 330
+                Z"
+                fill="#f5d47d"
+                opacity=".28"
+            />
+
+
+            <!-- Water lines -->
+
+            <g
+                fill="none"
+                stroke="#8cc9c0"
+                stroke-width="3"
+                opacity=".35"
+            >
+
+                <path d="M190 335 Q250 325 310 335"/>
+                <path d="M160 350 Q250 340 340 350"/>
+                <path d="M130 368 Q250 355 370 368"/>
+                <path d="M100 388 Q250 372 400 388"/>
+
+            </g>
+
+
+            <!-- Birds -->
+
+            <g
+                fill="none"
+                stroke="#172c28"
+                stroke-width="5"
+                stroke-linecap="round"
+            >
+
+                <path d="M270 95 Q280 84 290 95"/>
+                <path d="M290 95 Q300 84 310 95"/>
+
+                <path d="M335 110 Q345 100 355 110"/>
+                <path d="M355 110 Q365 100 375 110"/>
+
+                <path d="M395 88 Q405 78 415 88"/>
+                <path d="M415 88 Q425 78 435 88"/>
+
+            </g>
+
+
+            <!-- =================================
+                 LEFT GREEN LEAVES
+                 ================================= -->
+
+            <path
+                d="
+                M0 430
+                Q30 350 85 300
+                Q70 390 25 470
+                Z"
+                fill="#214f27"
+            />
+
+
+            <path
+                d="
+                M15 405
+                Q55 320 105 250
+                Q100 340 45 430
+                Z"
+                fill="url(#srGreen)"
+            />
+
+
+            <path
+                d="
+                M45 345
+                Q105 265 160 250
+                Q120 335 55 375
+                Z"
+                fill="#72ae3e"
+            />
+
+
+            <path
+                d="
+                M65 285
+                Q95 210 120 175
+                Q130 255 90 320
+                Z"
+                fill="#91c94b"
+            />
+
+
+            <!-- Leaf veins -->
+
+            <g
+                stroke="#d6ed92"
+                stroke-width="2"
+                opacity=".65"
+                fill="none"
+            >
+
+                <path d="M30 420 Q70 335 105 270"/>
+                <path d="M62 355 Q105 310 150 265"/>
+                <path d="M91 305 Q108 245 120 190"/>
+
+            </g>
+
+
+            <!-- =================================
+                 SERENITY TEXT BACKDROP
+                 ================================= -->
+
+            <path
+                d="
+                M30 310
+                Q250 275 470 310
+                L470 430
+                Q250 455 30 430 Z"
+                fill="#061e1c"
+                opacity=".35"
+            />
+
+
+            <!-- Serenity -->
+
+            <text
+                x="250"
+                y="380"
+                text-anchor="middle"
+                font-family="Georgia, Times New Roman, serif"
+                font-size="76"
+                font-weight="600"
+                font-style="normal"
+                letter-spacing="-3"
+                fill="#fff8df"
+                filter="url(#srTextShadow)"
+            >
+                Serenity
+            </text>
+
+
+            <!-- Gold leaf near text -->
+
+            <path
+                d="
+                M378 330
+                Q395 300 412 315
+                Q405 345 380 350
+                Z"
+                fill="url(#srGold)"
+            />
+
+
+            <!-- =================================
+                 BOTTOM WAVES
+                 ================================= -->
+
+            <path
+                d="
+                M115 435
+                Q190 400 265 425
+                Q335 450 410 415"
+                fill="none"
+                stroke="#83b83c"
+                stroke-width="10"
+                stroke-linecap="round"
+            />
+
+            <path
+                d="
+                M145 450
+                Q215 430 285 450
+                Q340 465 380 445"
+                fill="none"
+                stroke="#46a8aa"
+                stroke-width="7"
+                stroke-linecap="round"
+            />
+
+        </g>
+
+
+        <!-- =================================
+             PREMIUM OUTER BORDER
+             ================================= -->
+
+        <circle
+            cx="250"
+            cy="250"
+            r="240"
+            fill="none"
+            stroke="url(#srBorder)"
+            stroke-width="12"
+        />
+
+
+        <circle
+            cx="250"
+            cy="250"
+            r="229"
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="1"
+            opacity=".35"
+        />
+
+    </svg>
+    `;
+
+
+    /* -------------------------------
+       TOPBAR MEIN LOGO LAGAO
+    -------------------------------- */
+
+    const topbar=document.querySelector(".topbar");
+
+    if(topbar){
+
+        topbar.insertBefore(
+            logo,
+            topbar.firstChild
+        );
+
+    }else{
+
+        document.body.prepend(logo);
+
+    }
+
+})();
+
+</script>
+<!-- ==========================================
+     SERENITY RANDOM OPENING MESSAGE
+     ========================================== -->
+
+<style>
+
+#srOpeningMessage{
+    position:fixed;
+    inset:0;
+    z-index:999999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(2,18,16,.38);
+    backdrop-filter:blur(8px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+        opacity .6s ease,
+        visibility .6s ease;
+}
+
+#srOpeningMessage.srShow{
+    opacity:1;
+    visibility:visible;
+}
+
+
+.srMessageBox{
+    width:min(430px,92vw);
+
+    padding:34px 25px 28px;
+
+    text-align:center;
+
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.18),
+            rgba(255,255,255,.08)
+        );
+
+    border:1px solid rgba(255,255,255,.28);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.40),
+        inset 0 1px 0 rgba(255,255,255,.25);
+
+    backdrop-filter:blur(22px);
+
+    transform:
+        translateY(35px)
+        scale(.88);
+
+    opacity:0;
+
+    transition:
+        transform .75s cubic-bezier(.2,.8,.2,1),
+        opacity .65s ease;
+}
+
+#srOpeningMessage.srShow .srMessageBox{
+    transform:
+        translateY(0)
+        scale(1);
+
+    opacity:1;
+}
+
+
+/* Small Serenity label */
+
+.srMessageBrand{
+    font-size:10px;
+    letter-spacing:4px;
+    color:rgba(255,255,255,.65);
+    margin-bottom:22px;
+}
+
+
+/* Decorative circle */
+
+.srMessageIcon{
+    width:62px;
+    height:62px;
+
+    margin:0 auto 20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            rgba(255,255,255,.8),
+            rgba(255,255,255,.12) 55%,
+            rgba(255,255,255,.05)
+        );
+
+    border:1px solid rgba(255,255,255,.35);
+
+    box-shadow:
+        0 0 30px rgba(220,235,190,.18);
+
+    font-size:27px;
+
+    animation:
+        srMessageFloat 3s ease-in-out infinite;
+}
+
+
+@keyframes srMessageFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+
+}
+
+
+.srMessageText{
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:clamp(21px,5vw,27px);
+
+    line-height:1.45;
+
+    color:white;
+
+    text-shadow:
+        0 2px 12px rgba(0,0,0,.25);
+
+    margin-bottom:25px;
+}
+
+
+.srMessageLine{
+    width:45px;
+    height:1px;
+
+    margin:0 auto 22px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(235,215,145,.9),
+            transparent
+        );
+}
+
+
+.srMessageButton{
+    border:0;
+
+    padding:12px 25px;
+
+    border-radius:30px;
+
+    background:
+        rgba(255,255,255,.92);
+
+    color:#17483f;
+
+    font-size:14px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.18);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.srMessageButton:hover{
+    transform:translateY(-2px);
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.25);
+}
+
+.srMessageButton:active{
+    transform:scale(.96);
+}
+
+
+/* Mobile */
+
+@media(max-width:430px){
+
+    #srOpeningMessage{
+        padding:16px;
+    }
+
+    .srMessageBox{
+        padding:30px 20px 24px;
+        border-radius:25px;
+    }
+
+    .srMessageText{
+        font-size:21px;
+    }
+
+}
+
+</style>
+
+
+<script>
+
+(function(){
+
+    /* --------------------------------
+       RANDOM POSITIVE MESSAGES
+    -------------------------------- */
+
+    const messages = [
+
+        "आज का दिन आपके लिए एक नई शुरुआत है।",
+
+        "धीरे चलिए, लेकिन अपने सुकून से दूर मत जाइए।",
+
+        "आपके अंदर हर मुश्किल से आगे बढ़ने की ताकत है।",
+
+        "आज खुद को थोड़ा समय देना भी जरूरी है।",
+
+        "हर सुबह अपने साथ एक नई उम्मीद लेकर आती है।",
+
+        "जो आपके नियंत्रण में है, उसी पर अपना ध्यान रखिए।",
+
+        "छोटी-छोटी खुशियाँ भी जिंदगी को खूबसूरत बनाती हैं।",
+
+        "आप जितना सोचते हैं, उससे कहीं ज्यादा मजबूत हैं।",
+
+        "एक गहरी सांस लीजिए और इस पल को महसूस कीजिए।",
+
+        "आज किसी चीज़ को जल्दी करने की जरूरत नहीं है।",
+
+        "शांति कमजोरी नहीं, एक खूबसूरत ताकत है।",
+
+        "आपकी यात्रा आपकी अपनी है, उसे अपने तरीके से जिएँ।",
+
+        "बीता हुआ कल सीख था, आज एक नया अवसर है।",
+
+        "अपने मन को थोड़ा आराम दीजिए।",
+
+        "हर दिन खुद का थोड़ा बेहतर रूप बनने का मौका है।",
+
+        "उम्मीद को हमेशा अपने साथ रखिए।",
+
+        "आपके जीवन में अच्छे पल आने बाकी हैं।",
+
+        "आज बस एक अच्छी शुरुआत कीजिए।",
+
+        "अपने दिल को सुकून और मन को थोड़ा समय दीजिए।",
+
+        "आपका आज भी महत्वपूर्ण है।",
+
+        "जो अच्छा है, उसे महसूस करने के लिए थोड़ा रुकिए।",
+
+        "आप अकेले नहीं हैं, Serenity आपके शांत पलों के लिए है।",
+
+        "हर सांस एक नया पल है।",
+
+        "अपने ऊपर भरोसा रखिए।",
+
+        "शांति बाहर नहीं, कई बार हमारे अपने अंदर मिलती है।",
+
+        "आज अपने लिए एक मुस्कान जरूर रखिए।",
+
+        "धीरे-धीरे सब अपनी जगह बेहतर हो सकता है।",
+
+        "आपके छोटे कदम भी बड़ी यात्रा का हिस्सा हैं।",
+
+        "आज का पल वापस नहीं आएगा, इसे महसूस कीजिए।",
+
+        "मन को हल्का रखिए और उम्मीद को मजबूत।"
+
+    ];
+
+
+    /* --------------------------------
+       RANDOM MESSAGE
+    -------------------------------- */
+
+    let lastMessage =
+        Number(localStorage.getItem("srLastOpeningMessage"));
+
+    let randomIndex;
+
+    do{
+
+        randomIndex =
+            Math.floor(
+                Math.random() * messages.length
+            );
+
+    }while(
+        randomIndex === lastMessage &&
+        messages.length > 1
+    );
+
+    localStorage.setItem(
+        "srLastOpeningMessage",
+        randomIndex
+    );
+
+
+    /* --------------------------------
+       CREATE POPUP
+    -------------------------------- */
+
+    const popup =
+        document.createElement("div");
+
+    popup.id="srOpeningMessage";
+
+    popup.innerHTML=`
+
+        <div class="srMessageBox">
+
+            <div class="srMessageBrand">
+                SERENITY
+            </div>
+
+            <div class="srMessageIcon">
+                ✦
+            </div>
+
+            <div class="srMessageText">
+                ${messages[randomIndex]}
+            </div>
+
+            <div class="srMessageLine"></div>
+
+            <button
+                class="srMessageButton"
+                id="srMessageContinue">
+                Continue
+            </button>
+
+        </div>
+
+    `;
+
+
+    document.body.appendChild(popup);
+
+
+    /* --------------------------------
+       SHOW WITH ANIMATION
+    -------------------------------- */
+
+    setTimeout(function(){
+
+        popup.classList.add("srShow");
+
+    },450);
+
+
+    /* --------------------------------
+       CLOSE BUTTON
+    -------------------------------- */
+
+    document
+        .getElementById("srMessageContinue")
+        .addEventListener(
+            "click",
+            function(){
+
+                popup.classList.remove("srShow");
+
+                setTimeout(function(){
+
+                    popup.remove();
+
+                },650);
+
+            }
+        );
+
+
+    /* --------------------------------
+       AUTO CLOSE
+       8 SECONDS
+    -------------------------------- */
+
+    setTimeout(function(){
+
+        if(
+            document.body.contains(popup) &&
+            popup.classList.contains("srShow")
+        ){
+
+            popup.classList.remove("srShow");
+
+            setTimeout(function(){
+
+                if(popup.parentNode){
+                    popup.remove();
+                }
+
+            },650);
+
+        }
+
+    },8000);
+
+
+})();
+
+</script>
+<!-- SERENITY MESSAGE - KOMAL NAME -->
+
+<style>
+
+.srKomalName{
+    font-family:Georgia,serif;
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:1.5px;
+    color:#f4df9b;
+    margin-bottom:6px;
+
+    text-shadow:
+        0 2px 12px rgba(0,0,0,.35);
+}
+
+.srKomalRole{
+    font-size:8px;
+    letter-spacing:3px;
+    color:rgba(255,255,255,.55);
+    margin-bottom:20px;
+}
+
+</style>
+
+<script>
+
+(function(){
+
+    /* Existing popup ko find karo */
+    const popup =
+        document.getElementById("srOpeningMessage");
+
+    if(!popup) return;
+
+
+    /* Existing brand ke upar Komal add karo */
+
+    const box =
+        popup.querySelector(".srMessageBox");
+
+    if(!box) return;
+
+
+    /* Duplicate na bane */
+
+    if(
+        box.querySelector(".srKomalName")
+    ){
+        return;
+    }
+
+
+    const komal =
+        document.createElement("div");
+
+    komal.innerHTML = `
+
+        <div class="srKomalName">
+            Komal
+        </div>
+
+        <div class="srKomalRole">
+            OWNER
+        </div>
+
+    `;
+
+
+    /* Sabse upar */
+
+    box.insertBefore(
+        komal,
+        box.firstChild
+    );
+
+})();
+
+</script>
+<!-- ==========================================
+     SERENITY TEMPLE - RAM JAAP TARGET 800
+     ========================================== -->
+
+<style>
+#srRamTarget{
+    font-weight:700;
+}
+</style>
+
+<script>
+(function(){
+
+    const NEW_TARGET = 800;
+
+    function updateRamTarget(){
+
+        /* Common target elements */
+        const targets = [
+            "#srRamTarget",
+            "#ramTarget",
+            ".srRamTarget",
+            "[data-ram-target]"
+        ];
+
+        targets.forEach(function(selector){
+
+            document.querySelectorAll(selector).forEach(function(el){
+
+                el.textContent = NEW_TARGET;
+
+            });
+
+        });
+
+
+        /* Temple ke andar agar 200 target ke roop mein likha ho */
+        const temple =
+            document.querySelector(
+                "#srTemplePage, #srTempleOverlay, .srTemplePage, .srTempleOverlay"
+            );
+
+        if(!temple) return;
+
+
+        temple.querySelectorAll("*").forEach(function(el){
+
+            if(el.children.length === 0){
+
+                const text = el.textContent.trim();
+
+                /* Sirf exact 200 ko target maan kar replace */
+                if(text === "200"){
+                    el.textContent = "800";
+                }
+
+            }
+
+        });
+
+
+        /* Progress maximum */
+        document
+            .querySelectorAll(
+                "#srRamProgress, .srRamProgress, [data-ram-progress]"
+            )
+            .forEach(function(bar){
+
+                bar.max = NEW_TARGET;
+
+            });
+
+    }
+
+
+    /* Page load */
+    updateRamTarget();
+
+
+    /* Temple open hone ke baad */
+    setTimeout(updateRamTarget,500);
+    setTimeout(updateRamTarget,1200);
+    setTimeout(updateRamTarget,2500);
+
+
+    /* Temple dynamically create ho to bhi */
+    const observer = new MutationObserver(function(){
+
+        updateRamTarget();
+
+    });
+
+    observer.observe(document.body,{
+        childList:true,
+        subtree:true
+    });
+
+
+})();
+</script>
+<!-- =========================================
+     SERENITY TEMPLE
+     DAILY RAM JAAP TARGET = 800
+     ========================================= -->
+
+<style>
+
+#sr800Temple{
+    position:fixed;
+    inset:0;
+    z-index:9999999;
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    padding:18px;
+
+    background:
+        linear-gradient(
+            rgba(20,10,5,.55),
+            rgba(10,5,3,.72)
+        ),
+        url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1800&q=90")
+        center/cover;
+
+    backdrop-filter:blur(5px);
+}
+
+#sr800Temple.srTempleOpen{
+    display:flex;
+}
+
+.sr800TempleBox{
+    width:min(460px,94vw);
+    max-height:92vh;
+    overflow:auto;
+
+    padding:30px 22px;
+
+    text-align:center;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(55,30,15,.88),
+            rgba(20,12,8,.82)
+        );
+
+    border:1px solid rgba(244,210,135,.42);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.55),
+        inset 0 1px 0 rgba(255,255,255,.12);
+
+    color:#fff;
+}
+
+.sr800Close{
+    position:absolute;
+    top:18px;
+    right:20px;
+
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.25);
+
+    background:rgba(255,255,255,.10);
+    color:white;
+
+    font-size:20px;
+    cursor:pointer;
+}
+
+.sr800Om{
+    font-size:38px;
+    margin-bottom:8px;
+
+    animation:srOmGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes srOmGlow{
+    0%,100%{
+        transform:scale(1);
+        text-shadow:0 0 10px rgba(255,210,110,.25);
+    }
+    50%{
+        transform:scale(1.08);
+        text-shadow:0 0 30px rgba(255,210,110,.75);
+    }
+}
+
+.sr800Title{
+    font-family:Georgia,serif;
+    font-size:28px;
+    color:#f6dc9a;
+    margin-bottom:5px;
+}
+
+.sr800Subtitle{
+    font-size:12px;
+    opacity:.65;
+    letter-spacing:2px;
+    margin-bottom:28px;
+}
+
+.sr800Count{
+    font-family:Georgia,serif;
+    font-size:68px;
+    line-height:1;
+    color:#ffe5a3;
+
+    text-shadow:
+        0 4px 20px rgba(255,200,90,.25);
+
+    margin-bottom:5px;
+}
+
+.sr800Target{
+    font-size:13px;
+    opacity:.65;
+    margin-bottom:22px;
+}
+
+.sr800Progress{
+    height:9px;
+    width:100%;
+
+    background:rgba(255,255,255,.12);
+
+    border-radius:20px;
+    overflow:hidden;
+
+    margin-bottom:25px;
+}
+
+#sr800ProgressBar{
+    height:100%;
+    width:0%;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #b99045,
+            #ffe6a0
+        );
+
+    transition:width .35s ease;
+}
+
+.sr800Jaap{
+    width:145px;
+    height:145px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,220,145,.55);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,220,145,.22),
+            rgba(100,50,15,.15)
+        );
+
+    color:#ffe4a0;
+
+    font-family:Georgia,serif;
+    font-size:22px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 0 8px rgba(255,215,130,.04),
+        0 15px 40px rgba(0,0,0,.3);
+
+    transition:
+        transform .15s ease,
+        box-shadow .2s ease;
+}
+
+.sr800Jaap:active{
+    transform:scale(.91);
+}
+
+.sr800Jaap.srFinished{
+    opacity:.55;
+    cursor:default;
+}
+
+.sr800Today{
+    margin-top:22px;
+    font-size:12px;
+    opacity:.55;
+}
+
+#sr800Celebration{
+    display:none;
+
+    margin-top:20px;
+    padding:18px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,215,130,.18),
+            rgba(255,255,255,.07)
+        );
+
+    border:1px solid rgba(255,220,145,.35);
+}
+
+#sr800Celebration.show{
+    display:block;
+    animation:srCelebrate .8s ease both;
+}
+
+@keyframes srCelebrate{
+    from{
+        opacity:0;
+        transform:scale(.85) translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+.sr800CelebrateTitle{
+    color:#ffe5a0;
+    font-family:Georgia,serif;
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.sr800CelebrateText{
+    font-size:13px;
+    line-height:1.6;
+    opacity:.85;
+}
+
+</style>
+
+
+<div id="sr800Temple">
+
+    <div class="sr800TempleBox">
+
+        <button
+            class="sr800Close"
+            id="sr800Close">
+            ×
+        </button>
+
+        <div class="sr800Om">ॐ</div>
+
+        <div class="sr800Title">
+            Ram Naam Jaap
+        </div>
+
+        <div class="sr800Subtitle">
+            DAILY DEVOTION
+        </div>
+
+        <div
+            class="sr800Count"
+            id="sr800Count">
+            0
+        </div>
+
+        <div class="sr800Target">
+            Daily Target: <b>800</b>
+        </div>
+
+        <div class="sr800Progress">
+            <div id="sr800ProgressBar"></div>
+        </div>
+
+        <button
+            class="sr800Jaap"
+            id="sr800Jaap">
+            राम<br>
+            <small>JAAP</small>
+        </button>
+
+        <div
+            class="sr800Today"
+            id="sr800Today">
+            आज की साधना
+        </div>
+
+        <div id="sr800Celebration">
+
+            <div class="sr800CelebrateTitle">
+                🙏 800 राम नाम पूर्ण
+            </div>
+
+            <div class="sr800CelebrateText">
+                आज का आपका संकल्प पूरा हुआ।
+                कुछ पल शांत बैठिए और इस सुकून को महसूस कीजिए।
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+(function(){
+
+    const TARGET = 800;
+
+    const STORAGE_DATE = "serenity_ram_800_date";
+    const STORAGE_COUNT = "serenity_ram_800_count";
+
+
+    /* ==============================
+       DATE
+    ============================== */
+
+    function today(){
+
+        const d = new Date();
+
+        return (
+            d.getFullYear() +
+            "-" +
+            String(d.getMonth()+1).padStart(2,"0") +
+            "-" +
+            String(d.getDate()).padStart(2,"0")
+        );
+    }
+
+
+    /* ==============================
+       GET DAILY COUNT
+    ============================== */
+
+    function getCount(){
+
+        const savedDate =
+            localStorage.getItem(STORAGE_DATE);
+
+        const currentDate = today();
+
+
+        /* New day = reset */
+        if(savedDate !== currentDate){
+
+            localStorage.setItem(
+                STORAGE_DATE,
+                currentDate
+            );
+
+            localStorage.setItem(
+                STORAGE_COUNT,
+                "0"
+            );
+
+            return 0;
+        }
+
+
+        return Math.min(
+            parseInt(
+                localStorage.getItem(STORAGE_COUNT) || "0",
+                10
+            ),
+            TARGET
+        );
+    }
+
+
+    /* ==============================
+       SAVE
+    ============================== */
+
+    function saveCount(count){
+
+        localStorage.setItem(
+            STORAGE_DATE,
+            today()
+        );
+
+        localStorage.setItem(
+            STORAGE_COUNT,
+            String(count)
+        );
+    }
+
+
+    /* ==============================
+       UPDATE UI
+    ============================== */
+
+    function update(){
+
+        const count = getCount();
+
+        document.getElementById(
+            "sr800Count"
+        ).textContent = count;
+
+
+        const percentage =
+            (count / TARGET) * 100;
+
+
+        document.getElementById(
+            "sr800ProgressBar"
+        ).style.width =
+            percentage + "%";
+
+
+        const button =
+            document.getElementById("sr800Jaap");
+
+
+        if(count >= TARGET){
+
+            button.classList.add(
+                "srFinished"
+            );
+
+            document
+                .getElementById("sr800Celebration")
+                .classList.add("show");
+
+        }else{
+
+            button.classList.remove(
+                "srFinished"
+            );
+
+            document
+                .getElementById("sr800Celebration")
+                .classList.remove("show");
+        }
+
+    }
+
+
+    /* ==============================
+       ADD ONE JAAP
+    ============================== */
+
+    document
+        .getElementById("sr800Jaap")
+        .addEventListener(
+            "click",
+            function(){
+
+                let count = getCount();
+
+
+                /* 800 ke baad stop */
+                if(count >= TARGET){
+                    return;
+                }
+
+
+                count++;
+
+                saveCount(count);
+
+                update();
+
+            }
+        );
+
+
+    /* ==============================
+       OPEN TEMPLE
+    ============================== */
+
+    function openTemple(){
+
+        update();
+
+        document
+            .getElementById("sr800Temple")
+            .classList.add("srTempleOpen");
+    }
+
+
+    /* ==============================
+       CLOSE TEMPLE
+    ============================== */
+
+    document
+        .getElementById("sr800Close")
+        .addEventListener(
+            "click",
+            function(){
+
+                document
+                    .getElementById("sr800Temple")
+                    .classList.remove("srTempleOpen");
+
+            }
+        );
+
+
+    /* ==============================
+       HOME TEMPLE CARD
+       CLICK DETECTION
+    ============================== */
+
+    document.addEventListener(
+        "click",
+        function(e){
+
+            const card =
+                e.target.closest(".card, .srExtraCard");
+
+            if(!card) return;
+
+
+            const text =
+                card.textContent
+                    .toLowerCase()
+                    .trim();
+
+
+            if(
+                text.includes("temple") ||
+                text.includes("मंदिर")
+            ){
+
+                e.preventDefault();
+                e.stopPropagation();
+
+                openTemple();
+
+            }
+
+        },
+        true
+    );
+
+
+    /* ==============================
+       INITIAL DAILY CHECK
+    ============================== */
+
+    getCount();
+
+
+})();
+
+</script>
+<!-- =========================================
+     SERENITY TEMPLE
+     FLOWER + PREMIUM ANIMATION
+     ========================================= -->
+
+<style>
+
+/* Temple mein soft floating flowers */
+.srTempleFlower{
+    position:fixed;
+    top:-40px;
+    z-index:10000010;
+    pointer-events:none;
+
+    font-size:18px;
+
+    animation:
+        srFlowerFall linear forwards;
+
+    filter:
+        drop-shadow(0 2px 5px rgba(255,210,130,.35));
+}
+
+@keyframes srFlowerFall{
+
+    0%{
+        transform:
+            translateY(-40px)
+            translateX(0)
+            rotate(0deg);
+
+        opacity:0;
+    }
+
+    10%{
+        opacity:.9;
+    }
+
+    50%{
+        transform:
+            translateY(50vh)
+            translateX(35px)
+            rotate(150deg);
+    }
+
+    100%{
+        transform:
+            translateY(110vh)
+            translateX(-30px)
+            rotate(330deg);
+
+        opacity:0;
+    }
+}
+
+
+/* Soft temple glow */
+
+#sr800Temple.srTempleOpen
+.sr800TempleBox{
+
+    animation:
+        srTempleAppear .8s cubic-bezier(.2,.8,.2,1);
+
+}
+
+@keyframes srTempleAppear{
+
+    from{
+        opacity:0;
+        transform:
+            scale(.92)
+            translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            scale(1)
+            translateY(0);
+    }
+
+}
+
+
+/* Om glow */
+
+.sr800Om{
+    animation:
+        srDivineGlow 2.5s ease-in-out infinite !important;
+}
+
+@keyframes srDivineGlow{
+
+    0%,100%{
+        transform:scale(1);
+
+        filter:
+            drop-shadow(
+                0 0 5px
+                rgba(255,210,120,.25)
+            );
+    }
+
+    50%{
+        transform:scale(1.12);
+
+        filter:
+            drop-shadow(
+                0 0 22px
+                rgba(255,210,120,.85)
+            );
+    }
+
+}
+
+
+/* Jaap button */
+
+.sr800Jaap{
+
+    position:relative;
+    overflow:hidden;
+
+}
+
+.sr800Jaap::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:80px;
+    height:80px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,225,150,.18);
+
+    transform:
+        scale(0);
+
+    opacity:0;
+
+    transition:
+        transform .45s ease,
+        opacity .45s ease;
+
+}
+
+.sr800Jaap:active::after{
+
+    transform:scale(2.2);
+    opacity:1;
+
+}
+
+
+/* 800 complete celebration */
+
+.sr800Celebration.show{
+
+    animation:
+        srCompleteGlow 1.8s ease-in-out infinite !important;
+
+}
+
+@keyframes srCompleteGlow{
+
+    0%,100%{
+        box-shadow:
+            0 0 0
+            rgba(255,215,130,0);
+    }
+
+    50%{
+        box-shadow:
+            0 0 35px
+            rgba(255,215,130,.25);
+    }
+
+}
+
+</style>
+
+
+<script>
+
+(function(){
+
+    /* =================================
+       FLOWER TYPES
+    ================================= */
+
+    const flowers = [
+        "🌸",
+        "🌺",
+        "🌼",
+        "🪷"
+    ];
+
+
+    /* =================================
+       CREATE ONE FLOWER
+    ================================= */
+
+    function createTempleFlower(){
+
+        const temple =
+            document.getElementById("sr800Temple");
+
+
+        if(
+            !temple ||
+            !temple.classList.contains("srTempleOpen")
+        ){
+            return;
+        }
+
+
+        const flower =
+            document.createElement("div");
+
+
+        flower.className =
+            "srTempleFlower";
+
+
+        flower.textContent =
+            flowers[
+                Math.floor(
+                    Math.random() *
+                    flowers.length
+                )
+            ];
+
+
+        flower.style.left =
+            Math.random() * 100 + "vw";
+
+
+        flower.style.fontSize =
+            (14 + Math.random() * 12) + "px";
+
+
+        flower.style.animationDuration =
+            (5 + Math.random() * 5) + "s";
+
+
+        document.body.appendChild(flower);
+
+
+        setTimeout(function(){
+
+            flower.remove();
+
+        },11000);
+
+    }
+
+
+    /* =================================
+       FLOWER RAIN
+    ================================= */
+
+    setInterval(
+        createTempleFlower,
+        650
+    );
+
+
+    /* =================================
+       SPECIAL 800 CELEBRATION
+    ================================= */
+
+    let celebrationShown = false;
+
+
+    function checkCompletion(){
+
+        const countElement =
+            document.getElementById("sr800Count");
+
+
+        const temple =
+            document.getElementById("sr800Temple");
+
+
+        if(
+            !countElement ||
+            !temple ||
+            !temple.classList.contains("srTempleOpen")
+        ){
+            return;
+        }
+
+
+        const count =
+            parseInt(
+                countElement.textContent,
+                10
+            );
+
+
+        if(
+            count === 800 &&
+            !celebrationShown
+        ){
+
+            celebrationShown = true;
+
+
+            /* Flower burst */
+
+            for(
+                let i = 0;
+                i < 25;
+                i++
+            ){
+
+                setTimeout(
+                    createTempleFlower,
+                    i * 80
+                );
+
+            }
+
+        }
+
+
+        if(count < 800){
+
+            celebrationShown = false;
+
+        }
+
+    }
+
+
+    setInterval(
+        checkCompletion,
+        250
+    );
+
+
+})();
+
+</script>
+<!-- Serenity PWA Setup -->
+<script>
+(function () {
+    // Add PWA manifest without changing the existing HTML
+    if (!document.querySelector('link[rel="manifest"]')) {
+        const manifest = document.createElement("link");
+        manifest.rel = "manifest";
+        manifest.href = "./manifest.json";
+        document.head.appendChild(manifest);
+    }
+
+    // Register Service Worker
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+            navigator.serviceWorker.register("./sw.js")
+                .then(function () {
+                    console.log("Serenity PWA ready");
+                })
+                .catch(function (error) {
+                    console.log("PWA setup error:", error);
+                });
+        });
+    }
+})();
+</script>
+
+
+
+
